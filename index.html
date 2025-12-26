@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bjorn's Portfolio</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+    <div class="cursor-trailer"></div>
+
+    <!-- Navigation -->
+    <nav class="fade-in">
+        <a href="index.html">
+        <div class="logo">Portfolio<span class="dot">.</span></div>
+        </a>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="about.html">About</a></li>
+            <li><a href="works.html">Works</a></li>
+            <li><a href="testimonial.html">Testimonials</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-greeting slide-up delay-2">Hello, I'm</p>
+            <h1 class="hero-name scale-in delay-3">
+                <span class="first-name">Bjorn</span>
+                <span class="last-name">Tanamal</span>
+            </h1>
+            <p class="hero-description slide-up delay-4">
+                Frontend Developer.
+I don't just build websites—I build the digital infrastructure that drives your goals forward.
+            </p>
+            <div class="hero-buttons slide-up delay-5">
+                <a href="#works" class="btn btn-primary">View My Work →</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Project Preview -->
+<section class="featured-preview">
+    <div class="featured-content">
+        <p class="featured-label">Featured Project</p>
+        <h2 class="featured-title">Latest Work</h2>
+        
+        <a href="https://beeejooorn.github.io/Brew-Bond-Cafe/" target="_blank" class="featured-project-card">
+            <div class="featured-image">
+                <img src="/images/Brew & Bond Cafe.site.png" alt="Featured Project">
+                <div class="image-overlay">
+                    <span class="overlay-text">View Project</span>
+                </div>
+            </div>
+            <div class="featured-info">
+                <div class="featured-header">
+                    <span class="mini-status">Live</span>
+                    <span class="project-type">Web Development</span>
+                </div>
+                <h3>Brew & Bond Cafe</h3>
+                <p>A modern, responsive landing page for a local coffee shop. Focused on clean UI and seamless navigation to highlight the cafe's menu, atmosphere, and community-driven brand.</p>
+                <div class="featured-tags">
+                    <span class="mini-tag">HTML</span>
+                    <span class="mini-tag">CSS</span>
+                    <span class="mini-tag">JavaScript</span>
+                </div>
+            </div>
+        </a>
+        
+        <a href="works.html" class="view-all-projects">
+            View All Projects 
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+        </a>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-copyright">
+                © 2025 Designed & Built by Bjorn Tanamal. All rights reserved.
+            </div>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/bjorn-tanamal/" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                        <rect x="2" y="9" width="4" height="12"/>
+                        <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                </a>
+                <a href="https://www.facebook.com/HervyTanamal" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/beejoorn.dev_web/" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>
