@@ -78,31 +78,43 @@
             skillObserver.observe(skillsCard);
         }
 
-        // Scroll animation for project cards (for Works page) - AUTO DELAY
-        const projectCards = document.querySelectorAll('.project-card');
-        if (projectCards.length > 0) {
-            const projectObserver = new IntersectionObserver((entries) => {
+        // Generic scroll animation setup
+        function setupScrollReveal(selector, animationClass, options = {}) {
+            const elements = document.querySelectorAll(selector);
+            if (elements.length === 0) return;
+
+            const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Get the index of the card automatically
-                        const index = Array.from(projectCards).indexOf(entry.target);
-                        const delay = index * 100; // 100ms delay between each card
-                        
+                        let delay = 0;
+                        if (options.delayByIndex) {
+                            const index = Array.from(elements).indexOf(entry.target);
+                            delay = index * options.delayByIndex;
+                        } else if (entry.target.hasAttribute('data-delay')) {
+                            delay = parseInt(entry.target.getAttribute('data-delay'), 10);
+                        }
+
                         setTimeout(() => {
-                            entry.target.classList.add('scroll-reveal');
+                            entry.target.classList.add(animationClass);
                         }, delay);
-                        projectObserver.unobserve(entry.target);
+                        observer.unobserve(entry.target);
                     }
                 });
-            }, {
-                threshold: 0.2,
-                rootMargin: '0px 0px -100px 0px'
-            });
+            }, options.observerOptions);
 
-            projectCards.forEach(card => {
-                projectObserver.observe(card);
+            elements.forEach(element => {
+                observer.observe(element);
             });
         }
+
+        // Scroll animation for project cards (for Works page) - AUTO DELAY
+        setupScrollReveal('.project-card', 'scroll-reveal', {
+            delayByIndex: 100, // 100ms delay between each card
+            observerOptions: {
+                threshold: 0.2,
+                rootMargin: '0px 0px -100px 0px'
+            }
+        });
 
         // Auto-scroll image animation for project cards
             const projectImages = document.querySelectorAll('.project-image img');
@@ -116,24 +128,9 @@
 
 
         // Scroll animation for testimonial cards
-        const testimonialCards = document.querySelectorAll('.testimonial-card');
-        if (testimonialCards.length > 0) {
-            const testimonialObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const delay = entry.target.getAttribute('data-delay');
-                        setTimeout(() => {
-                            entry.target.classList.add('scroll-reveal');
-                        }, delay);
-                        testimonialObserver.unobserve(entry.target);
-                    }
-                });
-            }, {
+        setupScrollReveal('.testimonial-card', 'scroll-reveal', {
+            observerOptions: {
                 threshold: 0.2,
                 rootMargin: '0px 0px -100px 0px'
-            });
-
-            testimonialCards.forEach(card => {
-                testimonialObserver.observe(card);
-            });
-        }
+            }
+        });
