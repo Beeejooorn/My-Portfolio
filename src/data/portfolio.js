@@ -18,6 +18,8 @@ export const profile = {
   email: "bjorntanamalgrtr@gmail.com",
   location: "Valencia City, Bukidnon, PH",
   cvPath: "/Bjorn-Tanamal-CV.txt",
+  // Add a profile image URL or imported asset here when ready.
+  avatarUrl: "",
 };
 
 export const socialLinks = [

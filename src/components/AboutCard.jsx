@@ -1,8 +1,8 @@
-import { Code2, UserRound } from "lucide-react";
+import { UserRound } from "lucide-react";
 import GlassCard from "./GlassCard.jsx";
 import SectionIcon from "./SectionIcon.jsx";
 
-export default function AboutCard({ capabilities }) {
+export default function AboutCard() {
   return (
     <GlassCard
       as="section"
@@ -19,25 +19,12 @@ export default function AboutCard({ capabilities }) {
             </SectionIcon>
             About Me
           </h2>
-          <Code2 className="text-white/35" size={20} aria-hidden="true" />
         </div>
         <p className="text-base leading-7 text-text-muted">
           Frontend developer focused on the logic behind the design. I build fast,
           maintainable websites with clean structure, reliable responsive behavior, and
           client-friendly handoff.
         </p>
-      </div>
-
-      <div className="mt-7 grid gap-3">
-        {capabilities.map((item) => (
-          <div
-            className="rounded-2xl border border-white/10 bg-white/[0.035] p-4"
-            key={item.title}
-          >
-            <h3 className="text-sm font-bold text-white">{item.title}</h3>
-            <p className="mt-1 text-sm leading-6 text-text-muted">{item.description}</p>
-          </div>
-        ))}
       </div>
     </GlassCard>
   );

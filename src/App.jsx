@@ -8,7 +8,6 @@ import ProjectModal from "./components/ProjectModal.jsx";
 import SiteFooter from "./components/SiteFooter.jsx";
 import SkillsCard from "./components/SkillsCard.jsx";
 import {
-  capabilities,
   experience,
   profile,
   projects,
@@ -38,10 +37,10 @@ export default function App() {
       <div className="site-ambient" aria-hidden="true" />
       <main className="relative z-10 mx-auto grid w-full max-w-[1280px] grid-cols-1 gap-5 px-4 py-6 sm:px-6 md:grid-cols-8 md:gap-6 lg:grid-cols-12 lg:py-12">
         <HeroCard profile={profile} onViewProjects={handleViewProjects} />
-        <AboutCard capabilities={capabilities} />
+        <AboutCard />
         <SkillsCard skills={skills} />
 
-        {projects.map((project, index) => (
+        {projects.slice(0, 2).map((project, index) => (
           <ProjectCard
             id={index === 0 ? "projects" : undefined}
             project={project}

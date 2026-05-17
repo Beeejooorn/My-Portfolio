@@ -22,7 +22,7 @@ export default function SkillsCard({ skills }) {
       </div>
 
       <div className="mt-auto flex flex-wrap gap-2.5">
-        {skills.map((skill, index) => (
+        {skills.slice(0, 6).map((skill, index) => (
           <Tag tone={index < 4 ? "primary" : "neutral"} key={skill}>
             {skill}
           </Tag>
