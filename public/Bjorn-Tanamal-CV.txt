@@ -1,0 +1,41 @@
+Bjorn Tanamal
+Webflow / Front-end Developer
+Valencia City, Bukidnon, Philippines
+bjorntanamalgrtr@gmail.com
+GitHub: https://github.com/Beeejooorn
+LinkedIn: https://www.linkedin.com/in/bjorn-tanamal/
+
+PROFILE
+Webflow and front-end developer focused on responsive marketing websites,
+clean UI implementation, maintainable structure, CMS-friendly builds, and
+performance-minded launch support.
+
+CORE SKILLS
+- Webflow development
+- HTML, CSS, JavaScript
+- React and Tailwind CSS
+- Responsive design
+- CMS structure
+- Figma implementation
+- Accessibility and performance QA
+
+SELECTED PROJECTS
+Nova | SaaS Workflow Platform
+- Built a high-performance command-center style website for SaaS workflow storytelling.
+- Tech: HTML, CSS, JavaScript, Figma
+- Live: https://beeejooorn.github.io/Nova/
+
+Southlight | Photography & Videography Portfolio
+- Built a Webflow portfolio for a media studio with clear browsing structure.
+- Tech: Webflow, Figma
+- Live: https://southlight-portfolio.webflow.io/
+
+Brew & Bond | Cafe Website
+- Built a responsive landing page for a local coffee shop.
+- Tech: HTML, CSS, JavaScript, Figma
+- Live: https://beeejooorn.github.io/Brew-Bond-Cafe/
+
+DesignSpaces | Real Estate Website
+- Built a responsive property website focused on clarity and fast browsing.
+- Tech: HTML, CSS, JavaScript, Figma
+- Live: https://beeejooorn.github.io/design-spaces/
