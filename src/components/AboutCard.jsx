@@ -1,15 +1,19 @@
-import { UserRound } from "lucide-react";
+import { SquareArrowOutUpRight, UserRound } from "lucide-react";
 import GlassCard from "./GlassCard.jsx";
 import SectionIcon from "./SectionIcon.jsx";
 
-export default function AboutCard() {
+export default function AboutCard({ onOpen }) {
   return (
     <GlassCard
-      as="section"
-      className="flex flex-col justify-between p-7 sm:p-8 md:col-span-4 lg:col-span-4"
+      as="button"
+      type="button"
+      onClick={onOpen}
+      className="group flex cursor-pointer flex-col justify-between p-7 text-left sm:p-8 md:col-span-4 lg:col-span-4"
       whileHover={{ y: -3 }}
+      whileTap={{ scale: 0.99 }}
       transition={{ duration: 0.25 }}
       aria-labelledby="about-title"
+      aria-label="Open more information about Bjorn"
     >
       <div>
         <div className="mb-6 flex items-center justify-between gap-4">
@@ -19,6 +23,9 @@ export default function AboutCard() {
             </SectionIcon>
             About Me
           </h2>
+          <span className="grid h-8 w-8 place-items-center rounded-full bg-white/[0.055] text-white/45 transition group-hover:bg-white/[0.09] group-hover:text-white/75">
+            <SquareArrowOutUpRight size={15} aria-hidden="true" />
+          </span>
         </div>
         <p className="text-base leading-7 text-text-muted">
           Frontend developer focused on the logic behind the design. I build fast,

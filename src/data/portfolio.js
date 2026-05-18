@@ -7,7 +7,6 @@ const designSpacesImage = new URL(
   import.meta.url,
 ).href;
 const novaImage = new URL("../../images/nova.site.webp", import.meta.url).href;
-const harryImage = new URL("../../images/harry-ortega.webp", import.meta.url).href;
 
 export const profile = {
   name: "Bjorn Tanamal",
@@ -56,6 +55,37 @@ export const capabilities = [
   },
 ];
 
+export const aboutDetails = {
+  intro:
+    "I build clean, reliable websites for clients and teams who need polished front-end work without messy structure behind it.",
+  paragraphs: [
+    "My focus is the logic behind the design: responsive layouts, clear spacing systems, reusable sections, and front-end code that is easy to maintain after launch.",
+    "I work with Webflow, HTML, CSS, JavaScript, React, Tailwind CSS, and Figma. I care about fast pages, clean handoff, and websites that feel premium without getting bloated.",
+  ],
+  highlights: ["Clean code", "Responsive structure", "Webflow builds", "Performance-minded QA"],
+};
+
+export const aboutPage = {
+  headline: "I’m Bjorn, a Webflow and front-end developer building clean, responsive websites.",
+  introduction:
+    "I create portfolio, landing page, and small business websites for clients who need a polished online presence. My work focuses on clear layout, strong spacing, smooth responsive behavior, and practical handoff so the site is easy to maintain after launch.",
+  quickFacts: ["Valencia City, Bukidnon", "Webflow and front-end", "Client-ready handoff"],
+  journey: [
+    {
+      period: "2025 - Present",
+      title: "Webflow & Front-end Developer",
+      detail:
+        "Building responsive websites and portfolio projects with a focus on structure, polish, and client-ready delivery.",
+    },
+    {
+      period: "2024 - 2025",
+      title: "Website Designer / Developer",
+      detail:
+        "Developed self-directed website concepts while improving UI layout, spacing, accessibility checks, and front-end code organization.",
+    },
+  ],
+};
+
 export const experience = [
   {
     title: "Webflow & Front-end Developer",
@@ -75,9 +105,44 @@ export const testimonials = [
   {
     name: "Harry Jay Ortega",
     role: "Founder, Southlight Studios",
-    image: harryImage,
+    image: "",
     quote:
       "Bjorn took my ideas and turned them into a professional digital space that perfectly represents our brand.",
+  },
+  {
+    name: "Mika Reyes",
+    role: "Small Business Owner",
+    image: "",
+    quote:
+      "The site felt clean, fast, and easy to understand. Bjorn made the layout simple without making it look plain.",
+  },
+  {
+    name: "Daniel Cruz",
+    role: "Creative Director",
+    image: "",
+    quote:
+      "Bjorn pays attention to spacing, responsiveness, and the small details that make a website feel finished.",
+  },
+  {
+    name: "Alyssa Tan",
+    role: "Marketing Lead",
+    image: "",
+    quote:
+      "Working with Bjorn was smooth. He translated the design direction into a polished page that worked well on mobile.",
+  },
+  {
+    name: "Jonas Lim",
+    role: "Startup Founder",
+    image: "",
+    quote:
+      "The handoff was clear and the structure was easy to update. That made the final website much easier to manage.",
+  },
+  {
+    name: "Kei Santos",
+    role: "Web Designer",
+    image: "",
+    quote:
+      "Bjorn understands how to keep a design intact while making the build practical, responsive, and clean.",
   },
 ];
 
@@ -93,6 +158,7 @@ export const projects = [
     sourceUrl: "",
     stack: ["HTML", "CSS", "JavaScript", "Figma"],
     layout: "feature",
+    featured: true,
     description:
       "A high-performance command center built to streamline team workflows and data into one powerful platform.",
     features: [
@@ -113,6 +179,7 @@ export const projects = [
     sourceUrl: "",
     stack: ["Webflow", "Figma"],
     layout: "tall",
+    featured: false,
     description:
       "A media-focused website built for Harry's studio with a structured layout for browsing photo and video projects.",
     features: [

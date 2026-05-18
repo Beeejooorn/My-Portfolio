@@ -1,57 +1,75 @@
 import { useEffect, useState } from "react";
-import AboutCard from "./components/AboutCard.jsx";
-import ContactCard from "./components/ContactCard.jsx";
-import ExperienceCard from "./components/ExperienceCard.jsx";
-import HeroCard from "./components/HeroCard.jsx";
-import ProjectCard from "./components/ProjectCard.jsx";
+import { AnimatePresence, motion } from "framer-motion";
+import LoadingScreen from "./components/LoadingScreen.jsx";
 import ProjectModal from "./components/ProjectModal.jsx";
 import SiteFooter from "./components/SiteFooter.jsx";
-import SkillsCard from "./components/SkillsCard.jsx";
-import {
-  experience,
-  profile,
-  projects,
-  skills,
-  socialLinks,
-} from "./data/portfolio.js";
+import { socialLinks } from "./data/portfolio.js";
+import About from "./pages/About.jsx";
+import Home from "./pages/Home.jsx";
+import Projects from "./pages/Projects.jsx";
+
+const routes = new Set(["home", "about", "projects"]);
+
+function getRouteFromHash() {
+  const nextRoute = window.location.hash.replace(/^#\/?/, "").split("?")[0] || "home";
+  return routes.has(nextRoute) ? nextRoute : "home";
+}
 
 export default function App() {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [route, setRoute] = useState(getRouteFromHash);
 
   useEffect(() => {
-    document.body.style.overflow = selectedProject ? "hidden" : "";
+    const timerId = window.setTimeout(() => setIsLoading(false), 1450);
+    return () => window.clearTimeout(timerId);
+  }, []);
+
+  useEffect(() => {
+    const handleRouteChange = () => setRoute(getRouteFromHash());
+
+    window.addEventListener("hashchange", handleRouteChange);
+    return () => window.removeEventListener("hashchange", handleRouteChange);
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [route]);
+
+  useEffect(() => {
+    document.body.style.overflow = selectedProject || isLoading ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
-  }, [selectedProject]);
+  }, [selectedProject, isLoading]);
 
-  const handleViewProjects = () => {
-    document.getElementById("projects")?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
+  const handleNavigate = (nextRoute) => {
+    const normalizedRoute = routes.has(nextRoute) ? nextRoute : "home";
+    setSelectedProject(null);
+    window.location.hash = normalizedRoute === "home" ? "/" : `/${normalizedRoute}`;
   };
+
+  const page = {
+    home: <Home onNavigate={handleNavigate} onSelectProject={setSelectedProject} />,
+    about: <About onNavigate={handleNavigate} />,
+    projects: <Projects onNavigate={handleNavigate} onSelectProject={setSelectedProject} />,
+  }[route];
 
   return (
     <>
       <div className="site-ambient" aria-hidden="true" />
-      <main className="relative z-10 mx-auto grid w-full max-w-[1280px] grid-cols-1 gap-5 px-4 py-6 sm:px-6 md:grid-cols-8 md:gap-6 lg:grid-cols-12 lg:py-12">
-        <HeroCard profile={profile} onViewProjects={handleViewProjects} />
-        <AboutCard />
-        <SkillsCard skills={skills} />
-
-        {projects.slice(0, 2).map((project, index) => (
-          <ProjectCard
-            id={index === 0 ? "projects" : undefined}
-            project={project}
-            onSelect={setSelectedProject}
-            key={project.id}
-          />
-        ))}
-
-        <ExperienceCard experience={experience} />
-        <ContactCard profile={profile} socialLinks={socialLinks} />
-      </main>
+      <LoadingScreen isVisible={isLoading} />
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={route}
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+        >
+          {page}
+        </motion.div>
+      </AnimatePresence>
       <SiteFooter socialLinks={socialLinks} />
       <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
     </>
