@@ -1,9 +1,15 @@
 import { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ExternalLink, Github, X } from "lucide-react";
+import { ExternalLink, Github, Images, X } from "lucide-react";
 import Tag from "./Tag.jsx";
 
 export default function ProjectModal({ project, onClose }) {
+  const screenshots = project?.screenshots?.length
+    ? project.screenshots
+    : project
+      ? [{ image: project.image, label: `${project.shortTitle} preview` }]
+      : [];
+
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "Escape") onClose();
@@ -46,12 +52,24 @@ export default function ProjectModal({ project, onClose }) {
               </button>
 
               <div className="relative border-b border-white/10 bg-black/20 p-4 sm:p-6">
-                <div className="max-h-[58vh] overflow-y-auto rounded-3xl border border-white/10 bg-abyss">
-                  <img
-                    src={project.image}
-                    alt={`${project.shortTitle} full website screenshot`}
-                    className="w-full object-cover object-top"
-                  />
+                <div className="max-h-[62vh] space-y-4 overflow-y-auto rounded-3xl border border-white/10 bg-abyss p-2">
+                  {screenshots.map((screenshot, index) => (
+                    <figure
+                      className="overflow-hidden rounded-2xl border border-white/10 bg-black/20"
+                      key={`${screenshot.label}-${index}`}
+                    >
+                      <img
+                        src={screenshot.image}
+                        alt={`${project.shortTitle} ${screenshot.label ?? "project screenshot"}`}
+                        className="w-full object-contain object-top"
+                      />
+                      {screenshots.length > 1 ? (
+                        <figcaption className="border-t border-white/10 px-4 py-3 font-mono text-xs font-bold uppercase text-text-muted">
+                          {screenshot.label}
+                        </figcaption>
+                      ) : null}
+                    </figure>
+                  ))}
                 </div>
               </div>
 
@@ -93,6 +111,13 @@ export default function ProjectModal({ project, onClose }) {
                         Source code
                         <Github size={17} aria-hidden="true" />
                       </a>
+                    ) : null}
+
+                    {!project.liveUrl && !project.sourceUrl ? (
+                      <span className="glass-button inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-bold text-white/85">
+                        Local project - screenshots only
+                        <Images size={17} aria-hidden="true" />
+                      </span>
                     ) : null}
                   </div>
                 </div>

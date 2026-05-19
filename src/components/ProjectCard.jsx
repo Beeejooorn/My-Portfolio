@@ -1,4 +1,4 @@
-import { ArrowUpRight, ExternalLink, Github } from "lucide-react";
+import { ArrowUpRight, ExternalLink, Github, Images } from "lucide-react";
 import GlassCard from "./GlassCard.jsx";
 import Tag from "./Tag.jsx";
 
@@ -9,7 +9,16 @@ const layoutClasses = {
 };
 
 function ProjectLinks({ project }) {
-  if (!project.liveUrl && !project.sourceUrl) return null;
+  if (!project.liveUrl && !project.sourceUrl) {
+    return (
+      <div className="mt-auto pt-8">
+        <span className="glass-button inline-flex w-full items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-bold text-white transition group-hover:border-white/25">
+          View screenshots
+          <Images size={16} aria-hidden="true" />
+        </span>
+      </div>
+    );
+  }
 
   return (
     <div className="mt-auto grid gap-3 pt-8 sm:grid-cols-2">

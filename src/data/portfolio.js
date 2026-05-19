@@ -7,6 +7,14 @@ const designSpacesImage = new URL(
   import.meta.url,
 ).href;
 const novaImage = new URL("../../images/nova.site.webp", import.meta.url).href;
+const studentManagementDashboardImage = new URL(
+  "../../images/student-management-dashboard.png",
+  import.meta.url,
+).href;
+const studentManagementProfileImage = new URL(
+  "../../images/student-management-profile.png",
+  import.meta.url,
+).href;
 
 export const profile = {
   name: "Bjorn Tanamal",
@@ -66,7 +74,7 @@ export const aboutDetails = {
 };
 
 export const aboutPage = {
-  headline: "I’m Bjorn, a Webflow and front-end developer building clean, responsive websites.",
+  headline: "I'm Bjorn, a Webflow and front-end developer building clean, responsive websites.",
   introduction:
     "I create portfolio, landing page, and small business websites for clients who need a polished online presence. My work focuses on clear layout, strong spacing, smooth responsive behavior, and practical handoff so the site is easy to maintain after launch.",
   quickFacts: ["Valencia City, Bukidnon", "Webflow and front-end", "Client-ready handoff"],
@@ -148,6 +156,37 @@ export const testimonials = [
 
 export const projects = [
   {
+    id: "student-management-system",
+    title: "Student Management System | Academic Portal",
+    shortTitle: "Student Management System",
+    status: "Local Project",
+    category: "Management System",
+    image: studentManagementDashboardImage,
+    screenshots: [
+      {
+        image: studentManagementDashboardImage,
+        label: "Dashboard overview",
+      },
+      {
+        image: studentManagementProfileImage,
+        label: "Admin profile and account management",
+      },
+    ],
+    liveUrl: "",
+    sourceUrl: "",
+    stack: ["PHP", "MySQL", "HTML", "CSS", "JavaScript"],
+    layout: "feature",
+    featured: true,
+    description:
+      "A localhost academic portal for managing student records, enrollment activity, admin accounts, and system summaries from one workspace.",
+    features: [
+      "Dashboard overview for student records, courses, year levels, and recent entries",
+      "Admin profile area with account details, protected password updates, and admin management",
+      "Sidebar-based workspace for registration, enrollment, student lists, and profile workflows",
+      "Database-connected structure built for academic record management",
+    ],
+  },
+  {
     id: "nova",
     title: "Nova | SaaS Workflow Platform",
     shortTitle: "Nova",
@@ -157,7 +196,7 @@ export const projects = [
     liveUrl: "https://beeejooorn.github.io/Nova/",
     sourceUrl: "",
     stack: ["HTML", "CSS", "JavaScript", "Figma"],
-    layout: "feature",
+    layout: "tall",
     featured: true,
     description:
       "A high-performance command center built to streamline team workflows and data into one powerful platform.",
