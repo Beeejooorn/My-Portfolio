@@ -174,7 +174,7 @@ export const projects = [
     ],
     liveUrl: "",
     sourceUrl: "",
-    stack: ["PHP", "MySQL", "HTML", "CSS", "JavaScript"],
+    stack: ["PHP", "MySQL", "HTML", "CSS",],
     layout: "feature",
     featured: true,
     description:
