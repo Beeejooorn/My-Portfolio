@@ -7,6 +7,39 @@ const designSpacesImage = new URL(
   import.meta.url,
 ).href;
 const novaImage = new URL("../../images/nova.site.webp", import.meta.url).href;
+const profileImage = new URL("../../images/profile-bjorn.jpg", import.meta.url).href;
+const studentFlowDashboardDarkShowcaseImage = new URL(
+  "../../images/studentflow-showcase-dashboard-dark.jpg",
+  import.meta.url,
+).href;
+const studentFlowLoginDarkShowcaseImage = new URL(
+  "../../images/studentflow-showcase-login-dark.jpg",
+  import.meta.url,
+).href;
+const studentFlowProfileShowcaseImage = new URL(
+  "../../images/studentflow-showcase-profile.jpg",
+  import.meta.url,
+).href;
+const studentFlowCompletedTasksShowcaseImage = new URL(
+  "../../images/studentflow-showcase-tasks-completed.jpg",
+  import.meta.url,
+).href;
+const studentFlowMissingTasksShowcaseImage = new URL(
+  "../../images/studentflow-showcase-tasks-missing.jpg",
+  import.meta.url,
+).href;
+const studentFlowPendingTasksShowcaseImage = new URL(
+  "../../images/studentflow-showcase-tasks-pending.jpg",
+  import.meta.url,
+).href;
+const studentFlowDashboardLightShowcaseImage = new URL(
+  "../../images/studentflow-showcase-dashboard-light.jpg",
+  import.meta.url,
+).href;
+const studentFlowLoginLightShowcaseImage = new URL(
+  "../../images/studentflow-showcase-login-light.jpg",
+  import.meta.url,
+).href;
 const studentManagementDashboardImage = new URL(
   "../../images/student-management-dashboard.png",
   import.meta.url,
@@ -15,18 +48,33 @@ const studentManagementProfileImage = new URL(
   "../../images/student-management-profile.png",
   import.meta.url,
 ).href;
+const studentManagementLoginImage = new URL(
+  "../../images/sms_login.png",
+  import.meta.url,
+).href;
+const studentManagementRegistrationImage = new URL(
+  "../../images/sms_registration.png",
+  import.meta.url,
+).href;
+const studentManagementEnrollmentImage = new URL(
+  "../../images/sms_enrollment.png",
+  import.meta.url,
+).href;
+const studentManagementListImage = new URL(
+  "../../images/sms_studentlist.png",
+  import.meta.url,
+).href;
 
 export const profile = {
-  name: "Bjorn Tanamal",
+  name: "Hervy Bjorn C. Tanamal",
   shortName: "Bjorn",
-  role: "Webflow / Front-end Developer",
+  role: "Web Developer / Web Designer / Webflow Developer",
   headline: "Building the future, one line of code at a time",
   availability: "Available for Work",
   email: "bjorntanamalgrtr@gmail.com",
   location: "Valencia City, Bukidnon, PH",
-  cvPath: "/Bjorn-Tanamal-CV.txt",
-  // Add a profile image URL or imported asset here when ready.
-  avatarUrl: "",
+  cvPath: "/Hervy_Bjorn_Tanamal_CV.pdf",
+  avatarUrl: profileImage,
 };
 
 export const socialLinks = [
@@ -36,16 +84,19 @@ export const socialLinks = [
 ];
 
 export const skills = [
-  "Webflow",
   "HTML",
   "CSS",
   "JavaScript",
-  "React",
-  "Tailwind CSS",
+  "PHP",
+  "Python",
+  "Kotlin",
+  "Jetpack Compose",
+  "basic MySQL Database",
+  "basic React",
+  "basic Tailwind CSS",
+  "Webflow",
+  "Webflow CMS",
   "Figma",
-  "Responsive UI",
-  "CMS Structure",
-  "Performance QA",
 ];
 
 export const capabilities = [
@@ -65,47 +116,61 @@ export const capabilities = [
 
 export const aboutDetails = {
   intro:
-    "I build clean, reliable websites for clients and teams who need polished front-end work without messy structure behind it.",
+    "I design and build professional websites for brands, businesses, individuals, and student clients who need clean digital products that are easy to understand.",
   paragraphs: [
-    "My focus is the logic behind the design: responsive layouts, clear spacing systems, reusable sections, and front-end code that is easy to maintain after launch.",
-    "I work with Webflow, HTML, CSS, JavaScript, React, Tailwind CSS, and Figma. I care about fast pages, clean handoff, and websites that feel premium without getting bloated.",
+    "My work focuses on responsive layouts, clear spacing systems, maintainable front-end structure, and polished pages that help clients present their ideas with more credibility.",
+    "I work with Webflow, HTML, CSS, JavaScript, PHP, MySQL, Kotlin, Jetpack Compose, Tailwind CSS, and Figma. I care about clean handoff, practical implementation, and steady improvement through real projects.",
   ],
-  highlights: ["Clean code", "Responsive structure", "Webflow builds", "Performance-minded QA"],
+  highlights: ["Responsive websites", "Webflow builds", "Client-ready handoff", "Mobile app projects"],
 };
 
 export const aboutPage = {
-  headline: "I'm Bjorn, a Webflow and front-end developer building clean, responsive websites.",
+  headline: "I'm Bjorn, a web developer and Webflow developer building clean, responsive digital experiences.",
   introduction:
-    "I create portfolio, landing page, and small business websites for clients who need a polished online presence. My work focuses on clear layout, strong spacing, smooth responsive behavior, and practical handoff so the site is easy to maintain after launch.",
-  quickFacts: ["Valencia City, Bukidnon", "Webflow and front-end", "Client-ready handoff"],
-  journey: [
+    "I create websites and student-focused web/mobile projects with a focus on clear layouts, responsive behavior, maintainable structure, and polished presentation. My goal is to help clients and collaborators turn ideas into practical, professional digital products.",
+  quickFacts: ["Valencia City, Bukidnon", "Websites and mobile apps", "Client-ready handoff"],
+  process: [
     {
-      period: "2025 - Present",
-      title: "Webflow & Front-end Developer",
+      step: "01",
+      title: "Understand the goal",
       detail:
-        "Building responsive websites and portfolio projects with a focus on structure, polish, and client-ready delivery.",
+        "I clarify the project purpose, target users, content needs, and the result the website or app needs to support.",
     },
     {
-      period: "2024 - 2025",
-      title: "Website Designer / Developer",
+      step: "02",
+      title: "Plan the structure",
       detail:
-        "Developed self-directed website concepts while improving UI layout, spacing, accessibility checks, and front-end code organization.",
+        "I organize the sections, page flow, spacing, and responsive behavior before jumping into the final build.",
+    },
+    {
+      step: "03",
+      title: "Build cleanly",
+      detail:
+        "I focus on readable layout, maintainable front-end code, reusable sections, and Webflow structures that are easy to manage.",
+    },
+    {
+      step: "04",
+      title: "Polish and handoff",
+      detail:
+        "I check responsiveness, fix small visual details, and prepare the final work so clients or teams can maintain it with confidence.",
     },
   ],
 };
 
 export const experience = [
   {
-    title: "Webflow & Front-end Developer",
-    place: "Project-based portfolio and client builds",
-    period: "2025 - Present",
-    detail: "Building responsive marketing sites, studio portfolios, landing pages, and Webflow experiences.",
+    title: "Freelance Web Developer / Project-Based Website Developer",
+    place: "Freelance and local project opportunities",
+    period: "Mid 2024 - Mid 2025",
+    detail:
+      "Designed and developed Webflow and responsive website layouts while collaborating on client-ready websites such as Southlight Studio.",
   },
   {
-    title: "Website Designer / Developer",
-    place: "Self-directed launch projects",
-    period: "2024 - 2025",
-    detail: "Focused on clean UI, solid structure, responsive layouts, and maintainable front-end code.",
+    title: "WordPress Elementor Website Developer Apprentice",
+    place: "Website maintenance and layout polishing",
+    period: "2023 - 2024",
+    detail:
+      "Updated website content, fixed minor layout inconsistencies, removed outdated sections, and improved the overall presentation of WordPress Elementor pages.",
   },
 ];
 
@@ -156,6 +221,61 @@ export const testimonials = [
 
 export const projects = [
   {
+    id: "studentflow",
+    title: "StudentFlow | Student Task Management Mobile App",
+    shortTitle: "StudentFlow",
+    status: "Client Project",
+    category: "Mobile App",
+    image: studentFlowDashboardDarkShowcaseImage,
+    screenshots: [
+      {
+        image: studentFlowDashboardDarkShowcaseImage,
+        label: "Dark mode dashboard showcase",
+      },
+      {
+        image: studentFlowLoginDarkShowcaseImage,
+        label: "Dark mode login showcase",
+      },
+      {
+        image: studentFlowDashboardLightShowcaseImage,
+        label: "Light mode dashboard showcase",
+      },
+      {
+        image: studentFlowLoginLightShowcaseImage,
+        label: "Light mode login showcase",
+      },
+      {
+        image: studentFlowProfileShowcaseImage,
+        label: "Profile overview showcase",
+      },
+      {
+        image: studentFlowCompletedTasksShowcaseImage,
+        label: "Completed tasks showcase",
+      },
+      {
+        image: studentFlowMissingTasksShowcaseImage,
+        label: "Missing tasks showcase",
+      },
+      {
+        image: studentFlowPendingTasksShowcaseImage,
+        label: "Pending tasks empty state showcase",
+      },
+    ],
+    liveUrl: "",
+    sourceUrl: "",
+    stack: ["Kotlin", "Jetpack Compose"],
+    layout: "feature",
+    featured: true,
+    description:
+      "A student-focused mobile application built for a client to manage tasks, profile details, reminders, and study progress in a clean light and dark interface.",
+    features: [
+      "Account-based login and profile management",
+      "Task management for pending, completed, and missing work",
+      "Alarm and notification support for student reminders",
+      "Light and dark mode screens built with Kotlin and Jetpack Compose",
+    ],
+  },
+  {
     id: "student-management-system",
     title: "Student Management System | Academic Portal",
     shortTitle: "Student Management System",
@@ -168,14 +288,30 @@ export const projects = [
         label: "Dashboard overview",
       },
       {
+        image: studentManagementLoginImage,
+        label: "Admin login",
+      },
+      {
+        image: studentManagementRegistrationImage,
+        label: "Student registration",
+      },
+      {
+        image: studentManagementEnrollmentImage,
+        label: "Enrollment management",
+      },
+      {
+        image: studentManagementListImage,
+        label: "Student records list",
+      },
+      {
         image: studentManagementProfileImage,
         label: "Admin profile and account management",
       },
     ],
     liveUrl: "",
     sourceUrl: "",
-    stack: ["PHP", "MySQL", "HTML", "CSS",],
-    layout: "feature",
+    stack: ["HTML", "CSS", "PHP", "MySQL"],
+    layout: "tall",
     featured: true,
     description:
       "A localhost academic portal for managing student records, enrollment activity, admin accounts, and system summaries from one workspace.",

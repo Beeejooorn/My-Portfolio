@@ -123,11 +123,12 @@ img {
 }
 
 .glass-card:hover {
-  border-color: rgba(255, 255, 255, 0.17);
+  border-color: rgba(255, 255, 255, 0.115);
   box-shadow:
     0 28px 90px rgba(0, 0, 0, 0.46),
     0 18px 70px rgba(173, 198, 255, 0.055),
-    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    inset 0 1px 1px rgba(255, 255, 255, 0.16),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.035);
 }
 
 .avatar-placeholder {

@@ -55,6 +55,14 @@ function ProjectLinks({ project }) {
 
 export default function ProjectCard({ project, onSelect, id, variant = "home", isFeatured = false }) {
   const isFeature = project.layout === "feature" || project.layout === "tall";
+  const previewImageClass =
+    project.previewFit === "contain"
+      ? "h-full w-full object-contain object-center p-4 transition duration-700 group-hover:scale-[1.035]"
+      : "h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.045]";
+  const showcaseImageClass =
+    project.previewFit === "contain"
+      ? "h-full w-full object-contain object-center p-4 opacity-[0.92] brightness-[0.96] saturate-[0.92] transition duration-700 group-hover:scale-[1.025] group-hover:opacity-100"
+      : "h-full w-full object-cover object-top opacity-[0.82] brightness-[0.9] saturate-[0.9] transition duration-700 group-hover:scale-[1.035] group-hover:opacity-90";
 
   if (variant === "showcase") {
     const handleKeyDown = (event) => {
@@ -81,11 +89,15 @@ export default function ProjectCard({ project, onSelect, id, variant = "home", i
         transition={{ duration: 0.25 }}
         aria-label={`Open project details for ${project.title}`}
       >
-        <div className={`relative shrink-0 overflow-hidden bg-abyss ${isFeatured ? "h-64 lg:h-72" : "h-56 lg:h-64"}`}>
+        <div
+          className={`relative shrink-0 overflow-hidden bg-abyss ${
+            isFeatured ? "h-64 lg:h-72" : "h-56 lg:h-64"
+          }`}
+        >
           <img
             src={project.image}
-            alt={`${project.shortTitle} website preview`}
-            className="h-full w-full object-cover object-top opacity-[0.82] brightness-[0.9] saturate-[0.9] transition duration-700 group-hover:scale-[1.035] group-hover:opacity-90"
+            alt={`${project.shortTitle} project preview`}
+            className={showcaseImageClass}
             loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-abyss via-abyss/35 to-black/20" />
@@ -147,8 +159,8 @@ export default function ProjectCard({ project, onSelect, id, variant = "home", i
       <div className={`relative w-full overflow-hidden ${isFeature ? "h-72" : "h-52"}`}>
         <img
           src={project.image}
-          alt={`${project.shortTitle} website preview`}
-          className="h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.045]"
+          alt={`${project.shortTitle} project preview`}
+          className={previewImageClass}
           loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-abyss via-abyss/20 to-transparent" />
@@ -174,7 +186,7 @@ export default function ProjectCard({ project, onSelect, id, variant = "home", i
         </div>
 
         <div className="relative z-10 flex flex-wrap gap-2.5">
-          {project.stack.slice(0, 3).map((tech) => (
+          {project.stack.map((tech) => (
             <Tag key={tech}>{tech}</Tag>
           ))}
         </div>

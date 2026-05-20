@@ -5,7 +5,7 @@ export default function HeroCard({ profile, onViewProjects }) {
   return (
     <GlassCard
       as="section"
-      className="relative flex min-h-[430px] min-w-0 flex-col justify-between overflow-hidden p-7 sm:p-9 lg:col-span-8 lg:row-span-2 lg:min-h-[468px]"
+      className="relative flex min-h-[430px] min-w-0 flex-col justify-start gap-14 overflow-hidden p-7 sm:gap-16 sm:p-9 lg:col-span-8 lg:row-span-2 lg:min-h-[468px] lg:gap-20"
       initial={{ opacity: 0, y: 18 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
@@ -40,14 +40,14 @@ export default function HeroCard({ profile, onViewProjects }) {
       <div className="relative z-10 max-w-4xl">
         <h1
           id="hero-title"
-          className="max-w-[760px] text-[2.18rem] font-black leading-[1.06] text-white sm:text-6xl lg:text-[4.35rem]"
+          className="max-w-[780px] text-[2.28rem] font-black leading-[1.08] text-white sm:text-[3rem] lg:text-[3.42rem] xl:text-[3.58rem]"
         >
-          <span className="block sm:inline">Building the</span>
-          <span className="block sm:inline"> future,</span>
+          <span className="block sm:inline">Clean Webflow</span>
+          <span className="block sm:inline"> builds.</span>
           <br />
           <span>
-            <span className="text-gradient block sm:inline">one line of code</span>
-            <span className="text-gradient block sm:inline"> at a time</span>
+            <span className="text-gradient inline-block">Responsive front-end.</span>
+            <span className="text-gradient inline-block"> Client-ready handoff.</span>
           </span>
         </h1>
 

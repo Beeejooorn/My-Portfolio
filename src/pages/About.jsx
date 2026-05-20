@@ -1,4 +1,4 @@
-import { BriefcaseBusiness, CheckCircle2, UserRound } from "lucide-react";
+import { CheckCircle2, Route, UserRound } from "lucide-react";
 import BackButton from "../components/BackButton.jsx";
 import GlassCard from "../components/GlassCard.jsx";
 import SectionIcon from "../components/SectionIcon.jsx";
@@ -7,12 +7,12 @@ import { aboutPage, profile, testimonials } from "../data/portfolio.js";
 
 export default function About({ onNavigate }) {
   return (
-    <main className="relative z-10 mx-auto w-full max-w-[1180px] px-4 py-8 sm:px-6 lg:py-12">
+    <main className="relative z-10 mx-auto w-full max-w-[1280px] px-4 py-8 sm:px-6 lg:py-12">
       <BackButton onClick={() => onNavigate("home")} />
 
       <section className="mt-8 grid items-stretch gap-5 lg:grid-cols-12 lg:gap-6">
-        <GlassCard as="aside" className="overflow-hidden p-0 lg:col-span-4">
-          <div className="relative aspect-[4/3] max-h-[300px] overflow-hidden">
+        <GlassCard as="aside" className="overflow-hidden p-0 lg:col-span-3">
+          <div className="relative aspect-[4/3] max-h-[260px] overflow-hidden">
             {profile.avatarUrl ? (
               <img
                 src={profile.avatarUrl}
@@ -26,25 +26,25 @@ export default function About({ onNavigate }) {
             )}
             <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-abyss to-transparent" />
           </div>
-          <div className="p-7 sm:p-8">
+          <div className="p-6 sm:p-7">
             <p className="flex items-center gap-2 text-sm font-bold uppercase tracking-normal text-tertiary">
               <span className="h-2.5 w-2.5 rounded-full bg-tertiary shadow-[0_0_16px_rgba(78,222,163,0.72)]" />
               {profile.availability}
             </p>
-            <h1 className="mt-3 text-3xl font-black text-white">{profile.name}</h1>
+            <h1 className="mt-3 text-2xl font-black leading-tight text-white">{profile.name}</h1>
             <p className="mt-2 font-mono text-sm text-primary">{profile.role}</p>
           </div>
         </GlassCard>
 
-        <GlassCard as="section" className="flex flex-col justify-center p-7 sm:p-9 lg:col-span-8">
+        <GlassCard as="section" className="flex flex-col justify-center p-7 sm:p-9 lg:col-span-9">
           <span className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3.5 py-2 font-mono text-xs font-bold text-primary">
             <UserRound size={14} aria-hidden="true" />
             About Me
           </span>
-          <h2 className="mt-6 max-w-3xl text-3xl font-black leading-tight text-white sm:text-4xl">
+          <h2 className="mt-6 max-w-4xl text-3xl font-black leading-tight text-white sm:text-[2.65rem]">
             {aboutPage.headline}
           </h2>
-          <p className="mt-6 max-w-3xl text-base leading-8 text-text-muted sm:text-lg">
+          <p className="mt-5 max-w-4xl text-base leading-8 text-text-muted sm:text-lg">
             {aboutPage.introduction}
           </p>
           <div className="mt-8 grid gap-3 sm:grid-cols-3">
@@ -63,14 +63,14 @@ export default function About({ onNavigate }) {
         <GlassCard as="section" className="p-7 sm:p-8 lg:col-span-12">
           <div className="mb-6 flex items-center gap-3">
             <SectionIcon>
-              <BriefcaseBusiness size={20} aria-hidden="true" />
+              <Route size={20} aria-hidden="true" />
             </SectionIcon>
-            <h2 className="text-2xl font-black text-white">Career Journey</h2>
+            <h2 className="text-2xl font-black text-white">How I Work</h2>
           </div>
-          <div className="grid gap-5 md:grid-cols-2">
-            {aboutPage.journey.map((item) => (
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {aboutPage.process.map((item) => (
               <article className="rounded-2xl border border-white/10 bg-white/[0.025] p-5" key={item.title}>
-                <p className="font-mono text-xs font-bold uppercase text-primary">{item.period}</p>
+                <p className="font-mono text-xs font-bold uppercase text-primary">{item.step}</p>
                 <h3 className="mt-2 text-lg font-black text-white">{item.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-text-muted">{item.detail}</p>
               </article>

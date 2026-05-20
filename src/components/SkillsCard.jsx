@@ -12,7 +12,7 @@ export default function SkillsCard({ skills }) {
       transition={{ duration: 0.25 }}
       aria-labelledby="skills-title"
     >
-      <div className="mb-7 flex items-center justify-between gap-4">
+      <div className="mb-5 flex items-center justify-between gap-4">
         <h2 id="skills-title" className="flex items-center gap-3 text-2xl font-bold text-white">
           <SectionIcon tone="secondary">
             <Layers3 size={21} aria-hidden="true" />
@@ -21,8 +21,8 @@ export default function SkillsCard({ skills }) {
         </h2>
       </div>
 
-      <div className="mt-auto flex flex-wrap gap-2.5">
-        {skills.slice(0, 6).map((skill, index) => (
+      <div className="mt-auto flex flex-wrap gap-2">
+        {skills.map((skill, index) => (
           <Tag tone={index < 4 ? "primary" : "neutral"} key={skill}>
             {skill}
           </Tag>

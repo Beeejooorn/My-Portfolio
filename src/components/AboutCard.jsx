@@ -28,9 +28,9 @@ export default function AboutCard({ onOpen }) {
           </span>
         </div>
         <p className="text-base leading-7 text-text-muted">
-          Frontend developer focused on the logic behind the design. I build fast,
-          maintainable websites with clean structure, reliable responsive behavior, and
-          client-friendly handoff.
+         I build Webflow and front-end websites with clean structure, responsive layouts, 
+         and logic that holds up after launch. My focus is simple: fast pages, 
+         maintainable builds, and handoff clients can actually use.
         </p>
       </div>
     </GlassCard>

@@ -23,8 +23,8 @@ export default function Projects({ onNavigate, onSelectProject }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.08, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
         >
-          A focused collection of websites, Webflow builds, and front-end projects built
-          for clear structure, responsive behavior, and polished presentation.
+          A focused collection of websites, Webflow builds, mobile apps, and front-end
+          projects built for clear structure, responsive behavior, and polished presentation.
         </motion.p>
       </header>
 
