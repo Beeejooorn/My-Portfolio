@@ -66,7 +66,7 @@ const studentManagementListImage = new URL(
 ).href;
 
 export const profile = {
-  name: "Hervy Bjorn C. Tanamal",
+  name: "Bjorn Tanamal",
   shortName: "Bjorn",
   role: "Web Developer / Web Designer / Webflow Developer",
   headline: "Building the future, one line of code at a time",
