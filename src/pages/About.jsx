@@ -1,9 +1,10 @@
-import { CheckCircle2, Route, UserRound } from "lucide-react";
+import { Layers3, Route } from "lucide-react";
 import BackButton from "../components/BackButton.jsx";
 import GlassCard from "../components/GlassCard.jsx";
 import SectionIcon from "../components/SectionIcon.jsx";
+import Tag from "../components/Tag.jsx";
 import TestimonialCard from "../components/TestimonialCard.jsx";
-import { aboutPage, profile, testimonials } from "../data/portfolio.js";
+import { aboutPage, profile, skills, testimonials } from "../data/portfolio.js";
 
 export default function About({ onNavigate }) {
   return (
@@ -36,27 +37,31 @@ export default function About({ onNavigate }) {
           </div>
         </GlassCard>
 
-        <GlassCard as="section" className="flex flex-col justify-center p-7 sm:p-9 lg:col-span-9">
-          <span className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3.5 py-2 font-mono text-xs font-bold text-primary">
-            <UserRound size={14} aria-hidden="true" />
-            About Me
-          </span>
-          <h2 className="mt-6 max-w-4xl text-3xl font-black leading-tight text-white sm:text-[2.65rem]">
-            {aboutPage.headline}
-          </h2>
-          <p className="mt-5 max-w-4xl text-base leading-8 text-text-muted sm:text-lg">
-            {aboutPage.introduction}
-          </p>
-          <div className="mt-8 grid gap-3 sm:grid-cols-3">
-            {aboutPage.quickFacts.map((fact) => (
-              <div
-                className="flex items-center gap-2 rounded-2xl border border-white/10 bg-white/[0.025] px-4 py-3 text-sm font-bold text-white/90"
-                key={fact}
-              >
-                <CheckCircle2 className="shrink-0 text-primary" size={16} aria-hidden="true" />
-                <span>{fact}</span>
+        <GlassCard as="section" className="flex flex-col justify-between overflow-hidden p-7 sm:p-9 lg:col-span-9">
+          <div>
+            <div className="flex items-center gap-3">
+              <SectionIcon tone="secondary">
+                <Layers3 size={21} aria-hidden="true" />
+              </SectionIcon>
+              <div>
+                <p className="font-mono text-xs font-bold uppercase text-primary">Working Toolkit</p>
+                <h2 className="mt-1 text-3xl font-black text-white sm:text-4xl">Tech Stack</h2>
               </div>
-            ))}
+            </div>
+            <p className="mt-5 max-w-3xl text-base leading-8 text-text-muted">
+              The tools I use across Figma planning, responsive website development, Webflow
+              builds, CMS work, student systems, and the technologies I am actively improving.
+            </p>
+          </div>
+
+          <div className="mt-10 rounded-3xl border border-white/10 bg-black/[0.12] p-5 sm:p-6">
+            <div className="flex flex-wrap gap-2.5">
+              {skills.map((skill, index) => (
+                <Tag tone={index < 4 ? "primary" : "neutral"} key={skill}>
+                  {skill}
+                </Tag>
+              ))}
+            </div>
           </div>
         </GlassCard>
 

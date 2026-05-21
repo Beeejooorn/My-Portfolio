@@ -8,15 +8,15 @@ export default function AboutCard({ onOpen }) {
       as="button"
       type="button"
       onClick={onOpen}
-      className="group flex cursor-pointer flex-col justify-between p-7 text-left sm:p-8 md:col-span-4 lg:col-span-4"
+      className="group flex cursor-pointer flex-col p-7 text-left sm:p-8 md:col-span-4 lg:col-span-4 lg:row-span-2"
       whileHover={{ y: -3 }}
       whileTap={{ scale: 0.99 }}
       transition={{ duration: 0.25 }}
       aria-labelledby="about-title"
       aria-label="Open more information about Bjorn"
     >
-      <div>
-        <div className="mb-6 flex items-center justify-between gap-4">
+      <div className="flex h-full flex-col">
+        <div className="flex items-center justify-between gap-4">
           <h2 id="about-title" className="flex items-center gap-3 text-2xl font-bold text-white">
             <SectionIcon>
               <UserRound size={21} aria-hidden="true" />
@@ -27,11 +27,21 @@ export default function AboutCard({ onOpen }) {
             <SquareArrowOutUpRight size={15} aria-hidden="true" />
           </span>
         </div>
-        <p className="text-base leading-7 text-text-muted">
-         I build Webflow and front-end websites with clean structure, responsive layouts, 
-         and logic that holds up after launch. My focus is simple: fast pages, 
-         maintainable builds, and handoff clients can actually use.
-        </p>
+
+        <div className="flex flex-1 items-center py-10">
+          <p className="max-w-[32rem] text-base leading-8 text-text-muted">
+            I handle the design and development side of responsive websites, from Figma
+            planning to front-end builds and Webflow delivery.
+          </p>
+        </div>
+
+        <div className="rounded-3xl border border-white/10 bg-white/[0.025] p-5">
+          <p className="font-mono text-xs font-bold uppercase text-primary">Focus</p>
+          <p className="mt-2 text-sm leading-6 text-text-muted">
+            Clear layouts, responsive behavior, CMS-ready structure, and client feedback
+            revisions.
+          </p>
+        </div>
       </div>
     </GlassCard>
   );

@@ -68,12 +68,12 @@ const studentManagementListImage = new URL(
 export const profile = {
   name: "Bjorn Tanamal",
   shortName: "Bjorn",
-  role: "Web Developer / Web Designer / Webflow Developer",
+  role: "Web Developer & Web Designer | Front-End Development | Webflow Development",
   headline: "Building the future, one line of code at a time",
   availability: "Available for Work",
   email: "bjorntanamalgrtr@gmail.com",
-  location: "Valencia City, Bukidnon, PH",
-  cvPath: "/Hervy_Bjorn_Tanamal_CV.pdf",
+  location: "Valencia City, Bukidnon, Philippines",
+  cvPath: "/Bjorn_Tanamal_CV.pdf",
   avatarUrl: profileImage,
 };
 
@@ -88,15 +88,20 @@ export const skills = [
   "CSS",
   "JavaScript",
   "PHP",
-  "Python",
-  "Kotlin",
-  "Jetpack Compose",
-  "basic MySQL Database",
-  "basic React",
-  "basic Tailwind CSS",
   "Webflow",
   "Webflow CMS",
+  "WordPress Elementor",
   "Figma",
+  "Responsive Design",
+  "Kotlin",
+  "Jetpack Compose",
+  "Room Database",
+  "MySQL",
+  "React",
+  "Tailwind CSS",
+  "TypeScript",
+  "Node.js",
+  "Python",
 ];
 
 export const capabilities = [
@@ -116,43 +121,58 @@ export const capabilities = [
 
 export const aboutDetails = {
   intro:
-    "I design and build professional websites for brands, businesses, individuals, and student clients who need clean digital products that are easy to understand.",
+    "I design and build responsive websites for brands, businesses, individuals, and student clients who need clean digital products that are easy to understand.",
   paragraphs: [
-    "My work focuses on responsive layouts, clear spacing systems, maintainable front-end structure, and polished pages that help clients present their ideas with more credibility.",
-    "I work with Webflow, HTML, CSS, JavaScript, PHP, MySQL, Kotlin, Jetpack Compose, Tailwind CSS, and Figma. I care about clean handoff, practical implementation, and steady improvement through real projects.",
+    "My work covers Figma layout planning, front-end implementation, Webflow builds, CMS setup, contact forms, animations, revisions, and mobile-responsive delivery.",
+    "I am currently improving React, Tailwind CSS, TypeScript, Node.js, and full-stack web development while continuing to build practical client and student projects.",
   ],
-  highlights: ["Responsive websites", "Webflow builds", "Client-ready handoff", "Mobile app projects"],
+  highlights: ["Responsive websites", "Webflow builds", "Front-end development", "Client-ready handoff"],
 };
 
 export const aboutPage = {
-  headline: "I'm Bjorn, a web developer and Webflow developer building clean, responsive digital experiences.",
+  headline: "I'm Bjorn, a web developer and web designer building clean, responsive digital experiences.",
   introduction:
-    "I create websites and student-focused web/mobile projects with a focus on clear layouts, responsive behavior, maintainable structure, and polished presentation. My goal is to help clients and collaborators turn ideas into practical, professional digital products.",
-  quickFacts: ["Valencia City, Bukidnon", "Websites and mobile apps", "Client-ready handoff"],
+    "I handle both the design and development side of website projects, from Figma planning to front-end builds, Webflow development, CMS setup, revisions, and responsive delivery.",
+  quickFacts: ["Valencia City, Bukidnon", "Websites and Webflow builds", "Client-ready handoff"],
+  snapshot: [
+    {
+      label: "Primary lane",
+      value: "Responsive websites, front-end development, and Webflow builds",
+    },
+    {
+      label: "Project range",
+      value: "Client portfolios, landing pages, business websites, and student systems",
+    },
+    {
+      label: "Working standard",
+      value: "Clear structure, polished spacing, practical handoff",
+    },
+  ],
+  buildFocus: ["Design-to-build accuracy", "Responsive delivery", "Maintainable structure"],
   process: [
     {
       step: "01",
       title: "Understand the goal",
       detail:
-        "I clarify the project purpose, target users, content needs, and the result the website or app needs to support.",
+        "I clarify the project purpose, target users, content needs, references, and the result the website or system needs to support.",
     },
     {
       step: "02",
       title: "Plan the structure",
       detail:
-        "I organize the sections, page flow, spacing, and responsive behavior before jumping into the final build.",
+        "I organize the page flow, spacing, Figma direction, and responsive behavior before moving into the final build.",
     },
     {
       step: "03",
       title: "Build cleanly",
       detail:
-        "I focus on readable layout, maintainable front-end code, reusable sections, and Webflow structures that are easy to manage.",
+        "I focus on readable layouts, maintainable front-end code, Webflow CMS structures, contact forms, and clean interactions.",
     },
     {
       step: "04",
       title: "Polish and handoff",
       detail:
-        "I check responsiveness, fix small visual details, and prepare the final work so clients or teams can maintain it with confidence.",
+        "I apply feedback, fix visual details, test responsiveness, and prepare the final work so it is practical to present or maintain.",
     },
   ],
 };
@@ -160,17 +180,17 @@ export const aboutPage = {
 export const experience = [
   {
     title: "Freelance Web Developer / Project-Based Website Developer",
-    place: "Freelance and local project opportunities",
+    place: "Remote / Project-Based",
     period: "Mid 2024 - Mid 2025",
     detail:
-      "Designed and developed Webflow and responsive website layouts while collaborating on client-ready websites such as Southlight Studio.",
+      "Handled paid project-based work including Figma layouts, responsive HTML/CSS/JavaScript builds, Webflow development, CMS setup, contact forms, animations, revisions, and student client systems.",
   },
   {
     title: "WordPress Elementor Website Developer Apprentice",
-    place: "Website maintenance and layout polishing",
+    place: "Freelancer-Guided Apprenticeship",
     period: "2023 - 2024",
     detail:
-      "Updated website content, fixed minor layout inconsistencies, removed outdated sections, and improved the overall presentation of WordPress Elementor pages.",
+      "Supported WordPress Elementor updates by editing content, images, buttons, links, sections, mobile layouts, product pages, and small HTML/CSS snippets.",
   },
 ];
 
@@ -263,16 +283,16 @@ export const projects = [
     ],
     liveUrl: "",
     sourceUrl: "",
-    stack: ["Kotlin", "Jetpack Compose"],
+    stack: ["Figma", "Kotlin", "Jetpack Compose", "Room Database", "SharedPreferences"],
     layout: "feature",
     featured: true,
     description:
-      "A student-focused mobile application built for a client to manage tasks, profile details, reminders, and study progress in a clean light and dark interface.",
+      "A paid student client mobile app built for task management, local account access, reminders, and study progress tracking in polished light and dark interfaces.",
     features: [
-      "Account-based login and profile management",
-      "Task management for pending, completed, and missing work",
-      "Alarm and notification support for student reminders",
-      "Light and dark mode screens built with Kotlin and Jetpack Compose",
+      "Figma-designed screens developed with Kotlin and Jetpack Compose",
+      "Add, view, edit, delete, schedule, complete, and track tasks",
+      "Room Database local storage with alarm and notification reminders",
+      "Local account creation, login, profile, logout, and dark mode using SharedPreferences",
     ],
   },
   {
@@ -310,16 +330,16 @@ export const projects = [
     ],
     liveUrl: "",
     sourceUrl: "",
-    stack: ["HTML", "CSS", "PHP", "MySQL"],
+    stack: ["HTML", "CSS", "PHP", "MySQL", "XAMPP"],
     layout: "tall",
     featured: true,
     description:
-      "A localhost academic portal for managing student records, enrollment activity, admin accounts, and system summaries from one workspace.",
+      "A paid student client web system for admin access, student records, enrollment activity, and academic summaries through a dashboard workspace.",
     features: [
-      "Dashboard overview for student records, courses, year levels, and recent entries",
-      "Admin profile area with account details, protected password updates, and admin management",
-      "Sidebar-based workspace for registration, enrollment, student lists, and profile workflows",
-      "Database-connected structure built for academic record management",
+      "Admin account creation, login access, and protected account workflows",
+      "Student add, edit, update, delete, list viewing, and record filtering",
+      "Dashboard summaries for courses, year levels, recent entries, and system status",
+      "MySQL database connection with XAMPP, CRUD operations, and data handling",
     ],
   },
   {
@@ -335,12 +355,12 @@ export const projects = [
     layout: "tall",
     featured: true,
     description:
-      "A high-performance command center built to streamline team workflows and data into one powerful platform.",
+      "A responsive SaaS-style website designed in Figma and built with modern landing page sections, dashboard-inspired UI, and polished JavaScript interactions.",
     features: [
-      "Dashboard-inspired interface for workflow clarity",
-      "Responsive page sections for desktop and mobile",
-      "Clean visual hierarchy for SaaS product storytelling",
-      "Polished front-end interactions using vanilla JavaScript",
+      "Hero, dashboard preview, features, pricing, testimonials, CTA areas, navigation, and footer",
+      "Mobile menu, scroll animations, button interactions, pricing toggle, FAQ dropdown, carousel, and modal popup",
+      "Modern SaaS landing page design with clean visual hierarchy",
+      "Responsive delivery across desktop and mobile",
     ],
   },
   {
@@ -352,16 +372,16 @@ export const projects = [
     image: southlightImage,
     liveUrl: "https://southlight-portfolio.webflow.io/",
     sourceUrl: "",
-    stack: ["Webflow", "Figma"],
+    stack: ["Figma", "Webflow", "Webflow CMS"],
     layout: "tall",
     featured: false,
     description:
-      "A media-focused website built for Harry's studio with a structured layout for browsing photo and video projects.",
+      "A paid Webflow portfolio website for a freelance creative professional offering photography, videography, branding, drone shots, image editing, and video editing services.",
     features: [
-      "Webflow implementation for a creative studio",
-      "Portfolio-first information architecture",
-      "Clear project browsing for potential clients",
-      "Client-ready handoff structure",
+      "Figma design direction revised through client feedback",
+      "Hero, gallery grid, about, services, package/pricing section, inquiry form, footer, and social links",
+      "Webflow CMS setup for portfolio images",
+      "Fully responsive Webflow build across desktop, tablet, and mobile",
     ],
   },
   {
@@ -376,12 +396,12 @@ export const projects = [
     stack: ["HTML", "CSS", "JavaScript", "Figma"],
     layout: "compact",
     description:
-      "A modern, responsive landing page for a local coffee shop with a clean UI and simple navigation.",
+      "A responsive cafe website designed and developed as a realistic brand experience with polished landing page sections.",
     features: [
-      "Responsive landing page build",
-      "Menu and brand sections designed for quick scanning",
+      "Hero, promo bar, navigation, brand value cards, customer favorites, product cards, branch CTA, footer, and social links",
+      "Mobile navigation, product View More buttons, animations, scroll effects, modal popup, and menu filtering",
       "Warm cafe-focused visual direction",
-      "Client-friendly structure for future updates",
+      "Responsive delivery for desktop and mobile",
     ],
   },
   {
@@ -396,12 +416,12 @@ export const projects = [
     stack: ["HTML", "CSS", "JavaScript", "Figma"],
     layout: "compact",
     description:
-      "A real estate platform concept built to make property browsing feel faster, calmer, and easier to understand.",
+      "A responsive real estate website designed and developed to make property browsing feel faster, calmer, and easier to understand.",
     features: [
-      "Property-focused layout and browsing flow",
-      "Responsive cards and section rhythm",
+      "Property search hero, statistics, featured listings, property cards, process/service section, testimonials, CTA, and footer",
+      "Property search and filter functionality",
+      "Mobile menu, animations, scroll effects, card interactions, and modal popup behavior",
       "Clean conversion path for inquiries",
-      "Performance-minded front-end structure",
     ],
   },
   {
@@ -416,11 +436,11 @@ export const projects = [
     stack: ["HTML", "CSS", "JavaScript", "Figma"],
     layout: "compact",
     description:
-      "A high-performance portfolio built to showcase professional photography while keeping gallery browsing fast.",
+      "A responsive photographer portfolio designed and developed with a bold hero, image-focused layout, and fast gallery browsing.",
     features: [
-      "Image-heavy portfolio presentation",
-      "Responsive gallery handling",
-      "Fast browsing for visual work",
+      "Featured project gallery, CTA, social links, footer, and image-focused sections",
+      "Mobile navigation, image hover effects, gallery interactions, filtering, and lightbox preview",
+      "Animations, scroll effects, and contact button behavior",
       "Minimal structure that lets the photography lead",
     ],
   },
@@ -436,12 +456,12 @@ export const projects = [
     stack: ["Webflow", "Figma"],
     layout: "compact",
     description:
-      "A clean landing page concept designed to build product trust and make the benefits easy to understand.",
+      "An early skincare landing page concept in Figma focused on clean product presentation and beauty brand direction.",
     features: [
-      "Product-focused landing page structure",
-      "Trust-building content hierarchy",
-      "Simple navigation and benefit-led sections",
-      "Designed for a future Webflow build",
+      "Hero section layout exploration",
+      "Clean visual presentation for product trust",
+      "Product-focused styling and beauty brand direction",
+      "Prepared as a design concept for future development",
     ],
   },
 ];
