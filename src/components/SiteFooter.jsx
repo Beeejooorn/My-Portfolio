@@ -15,7 +15,7 @@ export default function SiteFooter({ socialLinks }) {
           </a>
         ))}
       </div>
-      <p className="text-tertiary">Designed & built for job hunting.</p>
+      <p className="text-text-muted">All rights reserved © Bjorn Tanamal.</p>
     </footer>
   );
 }

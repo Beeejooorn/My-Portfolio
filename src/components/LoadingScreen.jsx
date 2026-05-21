@@ -11,11 +11,13 @@ export default function LoadingScreen({ isVisible }) {
     }
 
     let animationFrameId;
-    const duration = 1350;
+    const duration = 1550;
+    const holdAtZero = 180;
     const startTime = performance.now();
+    setProgress(0);
 
     const tick = (time) => {
-      const elapsed = Math.max(0, Math.min((time - startTime) / duration, 1));
+      const elapsed = Math.max(0, Math.min((time - startTime - holdAtZero) / duration, 1));
       const eased = 1 - (1 - elapsed) ** 3;
       setProgress(Math.round(eased * 100));
 

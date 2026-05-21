@@ -53,7 +53,13 @@ function ProjectLinks({ project }) {
   );
 }
 
-export default function ProjectCard({ project, onSelect, id, variant = "home", isFeatured = false }) {
+export default function ProjectCard({
+  project,
+  onSelect,
+  id,
+  variant = "home",
+  isFeatured = false,
+}) {
   const isFeature = project.layout === "feature" || project.layout === "tall";
   const previewImageClass =
     project.previewFit === "contain"
@@ -84,9 +90,12 @@ export default function ProjectCard({ project, onSelect, id, variant = "home", i
         }`}
         onClick={() => onSelect(project)}
         onKeyDown={handleKeyDown}
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.18, margin: "0px 0px -80px 0px" }}
         whileHover={{ y: -4, scale: 1.003 }}
         whileTap={{ scale: 0.99 }}
-        transition={{ duration: 0.25 }}
+        transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
         aria-label={`Open project details for ${project.title}`}
       >
         <div

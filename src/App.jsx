@@ -21,8 +21,22 @@ export default function App() {
   const [route, setRoute] = useState(getRouteFromHash);
 
   useEffect(() => {
-    const timerId = window.setTimeout(() => setIsLoading(false), 1450);
-    return () => window.clearTimeout(timerId);
+    let isCancelled = false;
+    const minimumLoad = new Promise((resolve) => window.setTimeout(resolve, 1900));
+    const pageLoaded =
+      document.readyState === "complete"
+        ? Promise.resolve()
+        : new Promise((resolve) => window.addEventListener("load", resolve, { once: true }));
+
+    Promise.all([minimumLoad, pageLoaded]).then(() => {
+      if (!isCancelled) {
+        setIsLoading(false);
+      }
+    });
+
+    return () => {
+      isCancelled = true;
+    };
   }, []);
 
   useEffect(() => {

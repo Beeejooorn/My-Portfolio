@@ -149,6 +149,56 @@ export const aboutPage = {
     },
   ],
   buildFocus: ["Design-to-build accuracy", "Responsive delivery", "Maintainable structure"],
+  capabilityGroups: [
+    {
+      title: "Design to build",
+      detail:
+        "I can plan layouts in Figma, translate approved directions into responsive pages, and keep the final build close to the design.",
+    },
+    {
+      title: "Webflow delivery",
+      detail:
+        "I build Webflow pages with CMS setup, contact forms, responsive layouts, and editor-friendly structure.",
+    },
+    {
+      title: "Front-end execution",
+      detail:
+        "I handle HTML, CSS, JavaScript, PHP, and project revisions with attention to spacing, interaction details, and mobile behavior.",
+    },
+    {
+      title: "Client feedback",
+      detail:
+        "I am comfortable following screenshots, references, chat instructions, video calls, and direct feedback until the direction is clear.",
+    },
+  ],
+  toolkitGroups: [
+    {
+      label: "Web development",
+      items: ["HTML", "CSS", "JavaScript", "PHP", "Responsive Design"],
+    },
+    {
+      label: "Design and Webflow",
+      items: ["Figma", "Webflow", "Webflow CMS", "WordPress Elementor", "Contact Forms"],
+    },
+    {
+      label: "App and database work",
+      items: ["Kotlin", "Jetpack Compose", "Room Database", "SharedPreferences", "MySQL"],
+    },
+    {
+      label: "Currently improving",
+      items: ["React", "Tailwind CSS", "TypeScript", "Node.js", "Full-Stack Web Development"],
+    },
+  ],
+  profileSignals: [
+    "Problem-solving",
+    "Remote work",
+    "Client feedback handling",
+    "Independent work",
+    "Detail-oriented execution",
+    "Adaptability",
+  ],
+  learning:
+    "BSIT undergraduate coursework up to 2nd year at Central Mindanao University, with continued self-directed learning in modern web development and full-stack fundamentals.",
   process: [
     {
       step: "01",
@@ -191,6 +241,13 @@ export const experience = [
     period: "2023 - 2024",
     detail:
       "Supported WordPress Elementor updates by editing content, images, buttons, links, sections, mobile layouts, product pages, and small HTML/CSS snippets.",
+  },
+  {
+    title: "Webflow Developer Apprentice",
+    place: "Freelancer-Guided Paid Apprenticeship",
+    period: "2022 - 2023",
+    detail:
+      "Assisted with Webflow website builds for business, SaaS-style, and agency websites by editing sections, following Figma references, using CMS, and improving responsive layouts.",
   },
 ];
 
