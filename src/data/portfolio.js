@@ -88,9 +88,6 @@ export const skills = [
   "CSS",
   "JavaScript",
   "PHP",
-  "Webflow",
-  "Webflow CMS",
-  "WordPress Elementor",
   "Figma",
   "Responsive Design",
   "Kotlin",
@@ -177,8 +174,8 @@ export const aboutPage = {
       items: ["HTML", "CSS", "JavaScript", "PHP", "Responsive Design"],
     },
     {
-      label: "Design and Webflow",
-      items: ["Figma", "Webflow", "Webflow CMS", "WordPress Elementor", "Contact Forms"],
+      label: "Design and delivery",
+      items: ["Figma", "UI Layout Design", "Website Wireframing", "Contact Forms"],
     },
     {
       label: "App and database work",
