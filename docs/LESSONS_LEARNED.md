@@ -287,15 +287,79 @@ The user may approve a proposed change to the broader development process, but s
 
 ## 14. Initial Lesson Register
 
-The production redesign has not begun.
+M1 fresh application foundation has been implemented and remains pending user review.
 
-Therefore, there are currently **no verified lessons from the new implementation**.
+There are currently **two verified technical lessons from the new implementation**: LL-001 and LL-002 below. Their Verified status does not establish user acceptance of M1.
 
 Do not import old portfolio implementation techniques, legacy source code, or undocumented claims into this register.
 
 Historical prototype findings may inform the approved design specification and acceptance criteria, but they must not be misrepresented as verified findings from the new production implementation.
 
-The first legitimate lesson will be created when an authorized development task produces a meaningful technical finding.
+These findings were established during authorized M1 implementation and verification. They apply only within the environments and limitations recorded below.
+
+### LL-001 — React Router `isbot` Dependency
+
+**Status:** Verified
+
+**Date:** 2026-11-10
+
+**Related task:** M1 — Fresh Application Foundation, rendering-entry setup
+
+**Category:** Tooling
+
+**Environment:** Windows, Node.js 24.21.0, npm 11.19.0, React Router / `@react-router/dev` 8.5.1, default server entry, static prerendering with `ssr: false`.
+
+**Problem or discovery:** Initial `npm run typecheck` triggered a nested dependency installation because `isbot` was absent from direct application dependencies. The run printed `adding isbot@5 to your package.json` and subsequently failed to resolve `@react-router/dev`; other development-tool commands were also unavailable after that install.
+
+**Reproduction or context:** The installed framework selected its default server entry because this project supplies no custom `entry.server` module. Its entry-resolution code checks `package.json` direct dependencies for `isbot`.
+
+**Evidence:** Installed framework source: `node_modules/@react-router/dev/dist/typegen-CqlAVM2O.js`, entry-resolution block around lines 445–475. It adds `isbot: ^5` and invokes the detected package manager's install command when the dependency is absent. M1 command output in this review chat records the nested install and subsequent failures. [package.json](../package.json) and [package-lock.json](../package-lock.json) record the explicit resolved dependency.
+
+**Cause or technical explanation:** The nested install is confirmed by the framework source and observed output. Its exact role in removing local development tools was not independently isolated; do not generalize that side effect to every environment.
+
+**Correction or finding:** Explicitly installed and pinned `isbot` 5.2.3, then restored declared dependencies with `npm ci --include=dev`.
+
+**Verification:** Subsequent `npm run typecheck` (including `react-router typegen`) and `npm run build` passed. The build prerendered `/`, `/works`, `/about`, and `/contact`. No tests were rerun for this lesson closeout.
+
+**Applicability:** This project's installed React Router 8.5.1 default server-entry configuration, including its build-time rendering during static prerendering.
+
+**Limitations:** This does not establish that every React Router application requires an explicit `isbot` dependency. Revalidate for custom server entries, changed framework versions, or different dependency arrangements. Generated dependency files and local command evidence may not persist after reinstall or cleanup.
+
+**Related lessons:** None.
+
+**Supersession:** None.
+
+### LL-002 — Static Preview Clean-URL Routing
+
+**Status:** Verified
+
+**Date:** 2026-11-10
+
+**Related task:** M1 — Fresh Application Foundation, local production-output preview
+
+**Category:** Routing
+
+**Environment:** This project's Windows/Node.js local static preview, React Router 8.5.1 prerendered output in `build/client`, Playwright 1.65.0 with Microsoft Edge.
+
+**Problem or discovery:** The original Vite preview command returned Homepage HTML for direct requests to `/works`, `/about`, and `/contact`, despite the build having generated separate route HTML files.
+
+**Reproduction or context:** The first M1 browser run fetched each clean route URL and asserted its page-specific `<h1>` in the raw response. Those three assertions received Homepage HTML instead. Client navigation alone did not expose this serving problem.
+
+**Evidence:** Initial failing and subsequent successful `npm run test:e2e` outputs are recorded in this review chat. [scripts/preview.mjs](../scripts/preview.mjs) maps existing route directories to `index.html`; [tests/e2e/foundation.spec.ts](../tests/e2e/foundation.spec.ts) checks raw HTML, direct navigation, hydration, refresh, accessibility and browser errors. The local `test-results/.last-run.json` currently records `status: passed` with no failed tests; this ignored, replaceable summary does not by itself identify individual checks.
+
+**Cause or technical explanation:** The original local preview fallback served root HTML for clean route requests instead of the corresponding prerendered documents. Static HTML generation and correct URL-to-file serving are separate requirements.
+
+**Correction or finding:** Replaced the preview command with the project's minimal Node.js static preview server. Existing route directories resolve to their prerendered `index.html`; unknown extensionless paths use the generated SPA fallback. Missing file assets return 404.
+
+**Verification:** The subsequent `npm run test:e2e` passed all five tests. Four route-specific tests verified `/`, `/works`, `/about`, and `/contact`: correct raw HTML, direct rendering, interactive hydration, reload, zero axe violations and no captured console/page errors. The fifth test verified client navigation, history and an unknown-route shell. No tests were rerun for this lesson closeout.
+
+**Applicability:** This project's local static-preview configuration and current prerendered directory structure.
+
+**Limitations:** This does not verify production hosting rewrites, other static servers, or future route structures. The original Vite preview failure is specific to the observed configuration, not a claim about every Vite project. Hosting must be verified separately when authorized.
+
+**Related lessons:** None.
+
+**Supersession:** None.
 
 ## 15. Example Entry — Illustration Only
 

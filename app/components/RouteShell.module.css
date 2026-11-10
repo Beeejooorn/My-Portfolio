@@ -1,0 +1,6 @@
+.shell {
+  padding: var(--foundation-space);
+}
+.shell button {
+  font: inherit;
+}
