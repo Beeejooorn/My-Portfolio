@@ -1,12 +1,109 @@
+@font-face {
+  font-family: Inter;
+  src: url("/fonts/Inter-Variable.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Archivo Black";
+  src: url("/fonts/ArchivoBlack-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
 :root {
-  --foundation-space: 1rem;
+  --color-paper: #f5f3ef;
+  --color-ink: #272b27;
+  --color-muted: #5a605a;
+  --color-charcoal: #202520;
+  --color-rule: rgb(39 43 39 / 25%);
+  --color-menu-rule: rgb(39 43 39 / 13%);
+  --font-body: Inter, Arial, sans-serif;
+  --font-display: "Archivo Black", Inter, sans-serif;
+  --type-body: 1rem;
+  --type-nav: 12px;
+  --type-wordmark: 20px;
+  --type-heading: clamp(2.25rem, 5.55vw, 5rem);
+  --space-2: 0.5rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-footer: 116px;
+  --layout-width: 1440px;
+  --layout-gutter: 48px;
+  --nav-height: 88px;
+  --target-size: 44px;
+  --motion-fast: 180ms;
+  --motion-nav: 320ms;
+  --motion-menu: 300ms;
+  --ease-nav: cubic-bezier(0.4, 0, 0.2, 1);
+  --foundation-space: var(--space-6);
+}
+* {
+  box-sizing: border-box;
 }
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--type-body);
+  line-height: 1.5;
 }
-a:focus-visible,
-button:focus-visible {
+main {
+  flex: 1;
+}
+a {
+  color: inherit;
+}
+button {
+  font: inherit;
+}
+h1 {
+  font-family: var(--font-display);
+  font-size: var(--type-heading);
+  font-weight: 400;
+  line-height: 1.06;
+  letter-spacing: -0.045em;
+}
+:focus-visible {
   outline: 2px solid currentColor;
-  outline-offset: 3px;
+  outline-offset: 4px;
+}
+main:focus {
+  outline: none;
+}
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: var(--layout-gutter);
+  z-index: 20;
+  transform: translateY(-200%);
+  padding: 8px 12px;
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+.skip-link:focus {
+  transform: none;
+}
+@media (max-width: 700px) {
+  :root {
+    --layout-gutter: 24px;
+    --nav-height: 72px;
+    --type-wordmark: 17px;
+    --space-footer: 80px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-fast: 0ms;
+    --motion-nav: 0ms;
+    --motion-menu: 0ms;
+  }
 }

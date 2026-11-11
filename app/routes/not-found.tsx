@@ -1,6 +1,6 @@
 export default function NotFound() {
   return (
-    <main id="main">
+    <main tabIndex={-1} id="main">
       <h1>Page not found</h1>
     </main>
   );

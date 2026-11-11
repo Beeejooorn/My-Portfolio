@@ -32,7 +32,7 @@ for (const [path, title] of [
 }
 test("client navigation, history and unknown route", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole("link", { name: "Works", exact: true }).click();
+  await page.getByRole("link", { name: "WORK", exact: true }).click();
   await expect(page).toHaveURL("/works");
   await page.goBack();
   await expect(

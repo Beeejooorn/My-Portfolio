@@ -1,13 +1,8 @@
 import type { ReactNode } from "react";
-import {
-  Links,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-  Link,
-} from "react-router";
+import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
 import "./styles/tokens.css";
+import { Navbar } from "./components/Navbar";
+import { Footer } from "./components/Footer";
 export function Layout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
@@ -19,11 +14,9 @@ export function Layout({ children }: { children: ReactNode }) {
         <Links />
       </head>
       <body>
-        <a href="#main">Skip to content</a>
-        <nav aria-label="Foundation routes">
-          <Link to="/">Homepage</Link> <Link to="/works">Works</Link>{" "}
-          <Link to="/about">About</Link> <Link to="/contact">Contact</Link>
-        </nav>
+        <a className="skip-link" href="#main">
+          Skip to content
+        </a>
         {children}
         <ScrollRestoration />
         <Scripts />
@@ -32,5 +25,11 @@ export function Layout({ children }: { children: ReactNode }) {
   );
 }
 export default function App() {
-  return <Outlet />;
+  return (
+    <>
+      <Navbar />
+      <Outlet />
+      <Footer />
+    </>
+  );
 }
