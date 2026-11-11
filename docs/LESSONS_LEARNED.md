@@ -287,15 +287,15 @@ The user may approve a proposed change to the broader development process, but s
 
 ## 14. Initial Lesson Register
 
-M1 fresh application foundation has been implemented and remains pending user review.
+M1 produced the first two verified technical lessons. M3 produced LL-003 and LL-004 below.
 
-There are currently **two verified technical lessons from the new implementation**: LL-001 and LL-002 below. Their Verified status does not establish user acceptance of M1.
+There are currently **four verified technical lessons from the new implementation**: LL-001, LL-002, LL-003 and LL-004 below. Verified lesson status does not establish acceptance of its related milestone.
 
 Do not import old portfolio implementation techniques, legacy source code, or undocumented claims into this register.
 
 Historical prototype findings may inform the approved design specification and acceptance criteria, but they must not be misrepresented as verified findings from the new production implementation.
 
-These findings were established during authorized M1 implementation and verification. They apply only within the environments and limitations recorded below.
+These findings were established during authorized M1 and M3 implementation and verification. They apply only within the environments and limitations recorded below.
 
 ### LL-001 — React Router `isbot` Dependency
 
@@ -358,6 +358,70 @@ These findings were established during authorized M1 implementation and verifica
 **Limitations:** This does not verify production hosting rewrites, other static servers, or future route structures. The original Vite preview failure is specific to the observed configuration, not a claim about every Vite project. Hosting must be verified separately when authorized.
 
 **Related lessons:** None.
+
+**Supersession:** None.
+
+### LL-003 — Release Reveal Styles on Completion and Motion-Preference Changes
+
+**Status:** Verified
+
+**Date:** 2026-11-11
+
+**Related task:** M3 — Smooth Reveal implementation and prototype testing
+
+**Category:** Animation
+
+**Environment:** Motion 14.12.0, React 19.3.1, React Router 8.5.1, Edge via Playwright 1.65.0; an imperative opacity/transform animation on this project's route-content wrapper.
+
+**Problem or discovery:** The initial full `motion/react` animate path left a neutral transform after completion and could leave partial opacity after reduced motion was enabled mid-animation. Removing inline properties alone, or additionally cancelling the full-path controls, did not resolve the observed behavior.
+
+**Reproduction or context:** Animate the wrapper from partial opacity and positive translateY to full opacity and zero translation. Check computed styles after completion; separately switch `prefers-reduced-motion` to `reduce` during a reveal.
+
+**Evidence:** Initial failing browser outputs in the M3 review chat reported a retained identity matrix and partial opacity after interruption. Installed `motion-dom/dist/es/animation/NativeAnimationExtended.mjs` updates motion values and explicitly persists sampled styles on interruption. [SmoothReveal.tsx](../app/components/SmoothReveal.tsx) contains the corrected scoped implementation. [smooth-reveal.spec.ts](../tests/e2e/smooth-reveal.spec.ts) checks completion, live preference changes, rapid route changes and no-JavaScript visibility.
+
+**Cause or technical explanation:** The full animation path retains motion-value state as well as DOM styles; direct style removal was insufficient in this observed lifecycle. This does not establish a universal Motion defect or a complete account of every internal scheduling step.
+
+**Correction or finding:** Use the already installed `motion/react-mini` useAnimate hook for this simple DOM reveal. Cancel completed native effects and clear owned inline styles; stop/cancel and clear on effect cleanup or a switch to reduced motion. Keep prerendered CSS visible and do not animate when reduced motion is initially requested.
+
+**Verification:** The targeted 390px entrance and live interruption tests passed after the correction. The subsequent focused M3 run passed all 20 tests, covering five widths, all four prerendered routes, hydration, disabled/delayed JavaScript, history, scroll restoration, accessibility and M2 menu regressions. Completion/interruption checks require opacity 1 and transform none.
+
+**Applicability:** This project's M3 wrapper, installed package versions, native mini-animation path and explicit style ownership.
+
+**Limitations:** Revalidate when changing Motion versions, animation paths, custom style ownership or route lifecycle. Passing automated tests does not approve animation timing/feel or establish spoken screen-reader behavior. Test-only scroll height is not production page content.
+
+**Related lessons:** LL-002 for local prerendered preview verification.
+
+**Supersession:** None.
+
+### LL-004 — Verify Incoming Route First Paint in Development
+
+**Status:** Verified
+
+**Date:** 2026-11-11
+
+**Related task:** M3 — Local animation bug investigation
+
+**Category:** Animation / Testing / Accessibility
+
+**Environment:** This project's React 19.3.1 / React Router 8.5.1 development server, Motion 14.12.0 React mini hook, Chromium-based Edge and Playwright; reduced motion explicitly controlled.
+
+**Problem or discovery:** Production-preview tests confirmed eventual animation, but did not establish that development-server incoming content was animated on its first painted frame. Frame sampling reproduced About and Contact painting with opacity 1 and no transform, followed by the passive-effect reveal approximately one frame later. The user's report of completely absent motion was not reproduced in the controlled Edge session.
+
+**Reproduction or context:** Sample actual heading changes and computed wrapper styles on every requestAnimationFrame while navigating through the development server. A history URL update can precede the content commit, so sampling URL changes alone is insufficient.
+
+**Evidence:** Before-correction first-paint samples in this review chat show a fully visible About/Contact frame followed by opacity 0.35 and positive translateY. [m3-local.spec.ts](../tests/e2e/m3-local.spec.ts) now asserts the first new-heading frame under both motion preferences. [playwright.dev.config.ts](../playwright.dev.config.ts) runs those checks against the actual development server. Original style-cleanup findings remain documented separately in LL-003.
+
+**Cause or technical explanation:** A passive useEffect does not guarantee animation setup before the new content's first browser paint. Separately, mobile menu closing could hide a still-focused navigation link through redundant aria-hidden handling before route-focus transfer.
+
+**Correction or finding:** Start the existing reveal in useLayoutEffect without increasing duration or movement. Preserve visible prerendered CSS for the pre-hydration/no-JavaScript case. Move mobile focus out of the menu before closing, retain inert for closed-link exclusion, and remove redundant aria-hidden.
+
+**Verification:** All four development-server cases passed: first-painted route frames and mobile focus invariants, each under normal and reduced motion. The focused production-preview run passed all 22 cases, including disabled/delayed JavaScript, responsive entrances, history, rapid navigation, scroll restoration and M2 regressions. Type checking, lint, formatting and build passed. Mobile tests wait for actual hydrated state before exercising client interactions; no arbitrary readiness delay is used.
+
+**Applicability:** This project's route wrapper and development/production-preview verification. Check first committed content frames as well as intermediate and final animation states.
+
+**Limitations:** This does not prove the cause of every user's missing-motion report or directly inspect a user's existing browser profile. Spoken screen-reader announcements remain unverified. SSR content is intentionally visible before hydration, and final animation feel still requires user review.
+
+**Related lessons:** LL-003; LL-002 for static preview context.
 
 **Supersession:** None.
 

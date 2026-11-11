@@ -3,6 +3,7 @@ import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
 import "./styles/tokens.css";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
+import { SmoothReveal } from "./components/SmoothReveal";
 export function Layout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
@@ -28,7 +29,9 @@ export default function App() {
   return (
     <>
       <Navbar />
-      <Outlet />
+      <SmoothReveal>
+        <Outlet />
+      </SmoothReveal>
       <Footer />
     </>
   );

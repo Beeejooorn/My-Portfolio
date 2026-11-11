@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router";
 import styles from "./Navbar.module.css";
 
@@ -10,10 +10,19 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const header = useRef<HTMLElement>(null);
   const toggle = useRef<HTMLButtonElement>(null);
+  const menu = useRef<HTMLDivElement>(null);
+  const closeMenu = useCallback(() => {
+    if (mobile && menu.current?.contains(document.activeElement)) {
+      toggle.current?.focus({ preventScroll: true });
+    }
+    setOpen(false);
+  }, [mobile]);
   const previousPath = useRef(pathname);
   useEffect(() => {
     const media = window.matchMedia("(max-width: 700px)");
     const sync = () => {
+      if (media.matches && menu.current?.contains(document.activeElement))
+        toggle.current?.focus({ preventScroll: true });
       setMobile(media.matches);
       setOpen(false);
     };
@@ -113,11 +122,7 @@ export function Navbar() {
         onFocusCapture={() => setHidden(false)}
       >
         <nav aria-label="Main navigation" className={styles.inner}>
-          <Link
-            to="/"
-            className={styles.identity}
-            onClick={() => setOpen(false)}
-          >
+          <Link to="/" className={styles.identity} onClick={closeMenu}>
             Bjorn Tanamal
           </Link>
           <button
@@ -128,7 +133,8 @@ export function Navbar() {
             aria-expanded={open}
             aria-controls="shared-navigation"
             onClick={() => {
-              setOpen((value) => !value);
+              if (open) closeMenu();
+              else setOpen(true);
               setHidden(false);
             }}
           >
@@ -139,11 +145,11 @@ export function Navbar() {
             </span>
           </button>
           <div
+            ref={menu}
             id="shared-navigation"
             className={styles.links}
             inert={mobile && !open}
-            aria-hidden={mobile && !open ? true : undefined}
-            onClick={() => setOpen(false)}
+            onClick={closeMenu}
           >
             <NavLink to="/" end className={styles.home}>
               HOME
