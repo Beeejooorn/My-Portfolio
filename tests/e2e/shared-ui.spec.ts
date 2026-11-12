@@ -138,8 +138,8 @@ test("desktop scroll thresholds, focus, top and short pages", async ({
   await expect(header).toHaveAttribute("data-hidden", "false");
   await page.evaluate(() => window.scrollTo(0, 0));
   await expect(header).toHaveAttribute("data-hidden", "false");
-  // The Homepage is now scrollable; retain the short-page check on its route shell.
-  await page.goto("/works");
+  // About still uses a short route shell.
+  await page.goto("/about");
   await expect(header).toHaveAttribute("data-hidden", "false");
   expect(
     await page.evaluate(

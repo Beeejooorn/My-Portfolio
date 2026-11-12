@@ -22,12 +22,14 @@ for (const [path, title] of [
       expect(html).toMatch(
         /<h1\b[^>]*>[\s\S]*?FRONTEND[\s\S]*?DEVELOPER[\s\S]*?<\/h1>/,
       );
+    else if (path === "/works")
+      expect(html).toContain('<h1 aria-label="Works">WORKS</h1>');
     else expect(html).toContain(`<h1>${title}</h1>`);
     await page.goto(path);
     await expect(
       page.getByRole("heading", { name: title, exact: true }),
     ).toBeVisible();
-    if (path === "/") {
+    if (path === "/" || path === "/works") {
       await page.evaluate(() => {
         document.documentElement.dataset.homepageHydrationProbe = "ready";
       });
