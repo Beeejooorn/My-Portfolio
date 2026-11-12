@@ -1,9 +1,11 @@
 import { createServer } from "node:http";
+import process from "node:process";
 import { readFile, stat } from "node:fs/promises";
 import path from "node:path";
 import { URL } from "node:url";
 import { log } from "node:console";
 const root = path.resolve("build/client");
+const previewPort = Number(process.env.PORTFOLIO_PREVIEW_PORT ?? "4173");
 const types = {
   ".html": "text/html",
   ".js": "text/javascript",
@@ -43,6 +45,6 @@ createServer(async (req, res) => {
   } catch {
     res.writeHead(500).end("Preview unavailable");
   }
-}).listen(4173, "127.0.0.1", () =>
-  log("Foundation preview: http://127.0.0.1:4173"),
+}).listen(previewPort, "127.0.0.1", () =>
+  log(`Foundation preview: http://127.0.0.1:${previewPort}`),
 );

@@ -177,10 +177,10 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .header,
-  .links,
-  .icon span,
-  .links a {
+  :global(:root:not([data-m4-motion-review])) .header,
+  :global(:root:not([data-m4-motion-review])) .links,
+  :global(:root:not([data-m4-motion-review])) .icon span,
+  :global(:root:not([data-m4-motion-review])) .links a {
     transition: none;
   }
 }

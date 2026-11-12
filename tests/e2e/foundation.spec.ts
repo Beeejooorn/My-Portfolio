@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 for (const [path, title] of [
-  ["/", "Homepage"],
+  ["/", "FRONTEND DEVELOPER"],
   ["/works", "Works"],
   ["/about", "About"],
   ["/contact", "Contact"],
@@ -17,15 +17,45 @@ for (const [path, title] of [
     });
     const response = await request.get(path);
     expect(response.ok()).toBeTruthy();
-    expect(await response.text()).toContain(`<h1>${title}</h1>`);
+    const html = await response.text();
+    if (path === "/")
+      expect(html).toMatch(
+        /<h1\b[^>]*>[\s\S]*?FRONTEND[\s\S]*?DEVELOPER[\s\S]*?<\/h1>/,
+      );
+    else expect(html).toContain(`<h1>${title}</h1>`);
     await page.goto(path);
     await expect(
       page.getByRole("heading", { name: title, exact: true }),
     ).toBeVisible();
-    await page.getByRole("button").click();
-    await expect(page.getByRole("button")).toHaveText("Hydration check: 1");
-    await page.reload();
-    await expect(page.getByRole("button")).toHaveText("Hydration check: 0");
+    if (path === "/") {
+      await page.evaluate(() => {
+        document.documentElement.dataset.homepageHydrationProbe = "ready";
+      });
+      await page
+        .getByRole("navigation")
+        .getByRole("link", { name: "CONTACT", exact: true })
+        .click();
+      await expect(
+        page.getByRole("heading", { name: "Contact", exact: true }),
+      ).toBeVisible();
+      await expect(page.locator("html")).toHaveAttribute(
+        "data-homepage-hydration-probe",
+        "ready",
+      );
+      await page.goBack();
+      await expect(
+        page.getByRole("heading", { name: title, exact: true }),
+      ).toBeVisible();
+      await page.reload();
+      await expect(
+        page.getByRole("heading", { name: title, exact: true }),
+      ).toBeVisible();
+    } else {
+      await page.getByRole("button").click();
+      await expect(page.getByRole("button")).toHaveText("Hydration check: 1");
+      await page.reload();
+      await expect(page.getByRole("button")).toHaveText("Hydration check: 0");
+    }
     expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
     expect(errors).toEqual([]);
   });
@@ -36,7 +66,7 @@ test("client navigation, history and unknown route", async ({ page }) => {
   await expect(page).toHaveURL("/works");
   await page.goBack();
   await expect(
-    page.getByRole("heading", { name: "Homepage", exact: true }),
+    page.getByRole("heading", { name: "FRONTEND DEVELOPER", exact: true }),
   ).toBeVisible();
   await page.goForward();
   await expect(

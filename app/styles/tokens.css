@@ -101,7 +101,7 @@ main:focus {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  :root {
+  :root:not([data-m4-motion-review]) {
     --motion-fast: 0ms;
     --motion-nav: 0ms;
     --motion-menu: 0ms;

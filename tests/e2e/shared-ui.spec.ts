@@ -78,7 +78,10 @@ for (const reducedMotion of ["reduce", "no-preference"] as const) {
     await toggle.focus();
     await page.keyboard.press("Tab");
     await expect(
-      page.getByRole("button", { name: "Hydration check: 0" }),
+      page
+        .getByRole("list", { name: "Selected projects" })
+        .getByRole("link")
+        .first(),
     ).toBeFocused();
     await toggle.focus();
     await page.keyboard.press("Enter");
@@ -135,7 +138,8 @@ test("desktop scroll thresholds, focus, top and short pages", async ({
   await expect(header).toHaveAttribute("data-hidden", "false");
   await page.evaluate(() => window.scrollTo(0, 0));
   await expect(header).toHaveAttribute("data-hidden", "false");
-  await page.reload();
+  // The Homepage is now scrollable; retain the short-page check on its route shell.
+  await page.goto("/works");
   await expect(header).toHaveAttribute("data-hidden", "false");
   expect(
     await page.evaluate(
@@ -175,7 +179,7 @@ test("each shared desktop destination works from every route", async ({
   page,
 }) => {
   const destinations = [
-    ["Bjorn Tanamal", "/", "Homepage"],
+    ["Bjorn Tanamal", "/", "FRONTEND DEVELOPER"],
     ["WORK", "/works", "Works"],
     ["ABOUT", "/about", "About"],
     ["CONTACT", "/contact", "Contact"],

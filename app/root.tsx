@@ -1,8 +1,12 @@
-import type { ReactNode } from "react";
+import { lazy, Suspense, type ReactNode } from "react";
+import { useLocalMotionReview } from "./motion-review";
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
 import "./styles/tokens.css";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
+const LocalMotionReview = import.meta.env.DEV
+  ? lazy(() => import("./components/LocalMotionReview"))
+  : null;
 export function Layout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
@@ -25,11 +29,17 @@ export function Layout({ children }: { children: ReactNode }) {
   );
 }
 export default function App() {
+  const review = useLocalMotionReview();
   return (
     <>
       <Navbar />
       <Outlet />
       <Footer />
+      {review && LocalMotionReview && (
+        <Suspense fallback={null}>
+          <LocalMotionReview />
+        </Suspense>
+      )}
     </>
   );
 }

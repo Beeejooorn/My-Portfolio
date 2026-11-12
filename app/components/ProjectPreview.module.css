@@ -1,0 +1,80 @@
+.preview,
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+.preview {
+  width: 360px;
+  height: 250px;
+  transition:
+    opacity 180ms ease,
+    visibility 0s 180ms;
+}
+.preview[data-visible="true"],
+.cursor[data-visible="true"] {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+.surface {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transform: scale(0.72);
+  transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.preview[data-visible="true"] .surface {
+  transform: scale(1);
+}
+.surface img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transform: translateY(100%);
+  pointer-events: none;
+}
+.cursor {
+  width: 64px;
+  height: 64px;
+  z-index: 5;
+  transition:
+    opacity 140ms ease,
+    visibility 0s 140ms;
+}
+.disk {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1;
+  transform: scale(0.65);
+  transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.cursor[data-visible="true"] .disk {
+  transform: scale(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  :global(:root:not([data-m4-motion-review])) .preview,
+  :global(:root:not([data-m4-motion-review])) .cursor,
+  :global(:root:not([data-m4-motion-review])) .surface,
+  :global(:root:not([data-m4-motion-review])) .disk {
+    transition: none;
+  }
+  :global(:root:not([data-m4-motion-review])) .surface,
+  :global(:root:not([data-m4-motion-review])) .disk {
+    transform: none;
+  }
+}
