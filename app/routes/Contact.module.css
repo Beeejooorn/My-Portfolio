@@ -1,0 +1,169 @@
+.page {
+  --rule: #c7c8c0;
+  --edge: #83877f;
+  --inset: var(--layout-gutter);
+  width: min(
+    calc(100% - 2 * var(--inset)),
+    calc(var(--layout-width) - 2 * var(--inset))
+  );
+  flex: 0 0 auto;
+  margin: clamp(52px, 7vw, 100px) auto 0;
+  border-top: 1px solid var(--rule);
+  padding-top: 36px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(36px, 5vw, 72px);
+  align-items: start;
+  font-optical-sizing: none;
+}
+.page h1 {
+  margin: 20px 0 12px;
+  font-size: clamp(45px, 6.2vw, 88px);
+  line-height: 1;
+}
+.page header p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: clamp(16px, 1.4vw, 19px);
+}
+.page form,
+.page fieldset {
+  min-inline-size: 0;
+}
+.pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.page label,
+.page legend {
+  font-size: 15px;
+  font-weight: 500;
+}
+.page label > span[aria-hidden] {
+  color: var(--color-muted);
+}
+.page :is(input:not([type="checkbox"]), textarea) {
+  display: block;
+  margin-top: 8px;
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--edge);
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  font: 400 15px/1.5 var(--font-body);
+}
+.page textarea {
+  min-height: 116px;
+  resize: vertical;
+}
+.page fieldset {
+  padding: 0;
+  margin: 26px 0;
+  border: 0;
+}
+.page legend {
+  padding: 0;
+  margin-bottom: 10px;
+}
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+.choices label {
+  position: relative;
+  cursor: pointer;
+}
+.choices input {
+  position: absolute;
+  opacity: 0;
+}
+.choices span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  border: 1px solid var(--edge);
+  border-radius: 100px;
+  padding: 8px 18px;
+  font-size: 14px;
+  font-weight: 400;
+}
+.choices input:checked + span,
+.send button {
+  color: var(--color-paper);
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+}
+.choices input:focus-visible + span {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 3px;
+}
+@media (forced-colors: active) {
+  .choices input:checked + span {
+    border: 3px double Highlight;
+  }
+}
+.actions {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  font-size: 15px;
+}
+.page small {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--color-muted);
+}
+.page .error {
+  color: #813328;
+}
+.send {
+  text-align: right;
+}
+.send button {
+  border: 1px solid;
+  border-radius: 100px;
+  padding: 13px 26px;
+  font: 500 16px/1.35 var(--font-body);
+  cursor: pointer;
+}
+.send button:hover {
+  background: #383d38;
+}
+@media (max-width: 900px) {
+  .page {
+    --inset: 32px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 36px;
+  }
+  .page + footer {
+    --space-footer: 80px;
+  }
+}
+@media (max-width: 600px) {
+  .page {
+    --inset: 24px;
+    margin-top: 28px;
+    padding-top: 28px;
+  }
+  .pair {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+  .actions {
+    flex-wrap: wrap;
+  }
+  .send {
+    text-align: left;
+  }
+  .page + footer {
+    --space-footer: 72px;
+  }
+}

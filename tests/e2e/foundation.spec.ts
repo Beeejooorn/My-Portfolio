@@ -4,7 +4,7 @@ for (const [path, title] of [
   ["/", "FRONTEND DEVELOPER"],
   ["/works", "Works"],
   ["/about", "ABOUT ME."],
-  ["/contact", "Contact"],
+  ["/contact", "LET'S TALK."],
 ]) {
   test(`${path} prerenders, hydrates and is accessible`, async ({
     page,
@@ -24,7 +24,7 @@ for (const [path, title] of [
       );
     else if (path === "/works")
       expect(html).toContain('<h1 aria-label="Works">WORKS</h1>');
-    else expect(html).toContain(`<h1>${title}</h1>`);
+    else expect(html).toContain(`<h1>${title.replaceAll("'", "&#x27;")}</h1>`);
     await page.goto(path);
     await expect(
       page.getByRole("heading", { name: title, exact: true }),
@@ -38,7 +38,7 @@ for (const [path, title] of [
         .getByRole("link", { name: "CONTACT", exact: true })
         .click();
       await expect(
-        page.getByRole("heading", { name: "Contact", exact: true }),
+        page.getByRole("heading", { name: "LET'S TALK.", exact: true }),
       ).toBeVisible();
       await expect(page.locator("html")).toHaveAttribute(
         "data-homepage-hydration-probe",
@@ -53,10 +53,14 @@ for (const [path, title] of [
         page.getByRole("heading", { name: title, exact: true }),
       ).toBeVisible();
     } else {
-      await page.getByRole("button").click();
-      await expect(page.getByRole("button")).toHaveText("Hydration check: 1");
+      await page.getByRole("button", { name: "Send inquiry" }).click();
+      await expect(
+        page.getByRole("textbox", { name: "Name", exact: true }),
+      ).toHaveAttribute("aria-invalid", "true");
       await page.reload();
-      await expect(page.getByRole("button")).toHaveText("Hydration check: 0");
+      await expect(
+        page.getByRole("textbox", { name: "Name", exact: true }),
+      ).not.toHaveAttribute("aria-invalid", "true");
     }
     expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
     expect(errors).toEqual([]);

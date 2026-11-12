@@ -85,7 +85,7 @@ test("Homepage keyboard, internal actions, history and mobile menu", async ({
   await page.getByRole("link", { name: "GET IN TOUCH", exact: true }).focus();
   await page.keyboard.press("Enter");
   await expect(
-    page.getByRole("heading", { name: "Contact", exact: true }),
+    page.getByRole("heading", { name: "LET'S TALK.", exact: true }),
   ).toBeVisible();
   await expect(page.getByRole("main")).toBeFocused();
   await page.goBack();
@@ -128,7 +128,7 @@ test("Homepage composition and Contact action remain usable without JavaScript",
   ).toHaveCount(5);
   await page.getByRole("link", { name: "GET IN TOUCH", exact: true }).click();
   await expect(
-    page.getByRole("heading", { name: "Contact", exact: true }),
+    page.getByRole("heading", { name: "LET'S TALK.", exact: true }),
   ).toBeVisible();
   await context.close();
 });
