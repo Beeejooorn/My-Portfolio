@@ -138,8 +138,8 @@ test("desktop scroll thresholds, focus, top and short pages", async ({
   await expect(header).toHaveAttribute("data-hidden", "false");
   await page.evaluate(() => window.scrollTo(0, 0));
   await expect(header).toHaveAttribute("data-hidden", "false");
-  // About still uses a short route shell.
-  await page.goto("/about");
+  // Contact still uses a short route shell.
+  await page.goto("/contact");
   await expect(header).toHaveAttribute("data-hidden", "false");
   expect(
     await page.evaluate(
@@ -181,7 +181,7 @@ test("each shared desktop destination works from every route", async ({
   const destinations = [
     ["Bjorn Tanamal", "/", "FRONTEND DEVELOPER"],
     ["WORK", "/works", "Works"],
-    ["ABOUT", "/about", "About"],
+    ["ABOUT", "/about", "ABOUT ME."],
     ["CONTACT", "/contact", "Contact"],
   ];
   for (const from of paths) {

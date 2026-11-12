@@ -3,7 +3,7 @@ import AxeBuilder from "@axe-core/playwright";
 for (const [path, title] of [
   ["/", "FRONTEND DEVELOPER"],
   ["/works", "Works"],
-  ["/about", "About"],
+  ["/about", "ABOUT ME."],
   ["/contact", "Contact"],
 ]) {
   test(`${path} prerenders, hydrates and is accessible`, async ({
@@ -29,7 +29,7 @@ for (const [path, title] of [
     await expect(
       page.getByRole("heading", { name: title, exact: true }),
     ).toBeVisible();
-    if (path === "/" || path === "/works") {
+    if (path !== "/contact") {
       await page.evaluate(() => {
         document.documentElement.dataset.homepageHydrationProbe = "ready";
       });

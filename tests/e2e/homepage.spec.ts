@@ -94,7 +94,7 @@ test("Homepage keyboard, internal actions, history and mobile menu", async ({
   ).toBeVisible();
   await page.getByRole("link", { name: "More about me ↗" }).click();
   await expect(
-    page.getByRole("heading", { name: "About", exact: true }),
+    page.getByRole("heading", { name: "ABOUT ME.", exact: true }),
   ).toBeVisible();
   await page.goto("/");
   await expect(page.locator("#shared-navigation")).toHaveAttribute("inert", "");
