@@ -1,0 +1,38 @@
+.announcement {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .announcement + main {
+    transition: opacity 100ms ease-out;
+  }
+  .announcement[data-leaving="true"] + main {
+    opacity: 0.8;
+  }
+  .announcement + main h1,
+  .announcement + main h1 + p,
+  .announcement + main p:has(+ h1) {
+    animation: arrive 360ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  }
+  .announcement + main h1 + p,
+  .announcement + main p:has(+ h1) {
+    animation-delay: 35ms;
+  }
+}
+
+@keyframes arrive {
+  from {
+    opacity: 0.48;
+    transform: translateY(9px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

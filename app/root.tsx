@@ -1,7 +1,8 @@
 import { lazy, Suspense, type ReactNode } from "react";
 import { useLocalMotionReview } from "./motion-review";
-import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
+import { Links, Meta, Scripts, ScrollRestoration } from "react-router";
 import "./styles/tokens.css";
+import { RouteReveal } from "./components/RouteReveal";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 const LocalMotionReview = import.meta.env.DEV
@@ -33,7 +34,7 @@ export default function App() {
   return (
     <>
       <Navbar />
-      <Outlet />
+      <RouteReveal />
       <Footer />
       {review && LocalMotionReview && (
         <Suspense fallback={null}>
