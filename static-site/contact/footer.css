@@ -1,0 +1,10 @@
+.contact-footer{border-top:1px solid rgba(39,43,39,.25);margin-top:116px;padding-top:30px;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap}
+.footer-name{font-size:13px;letter-spacing:.035em;font-weight:500}
+.contact-options{display:flex;gap:34px;flex-wrap:wrap;align-items:center}
+.contact-destination{display:inline-flex;gap:11px;align-items:center;min-height:44px;padding:0;border:0;background:none;color:inherit;font:400 16px Inter,sans-serif}
+.contact-destination svg{width:21px;height:21px;flex:none;fill:currentColor}.contact-destination:first-child svg{fill:none}.contact-destination:nth-child(3) svg{width:20px;height:20px}.contact-destination:nth-child(4) svg{width:18px;height:18px}
+.back-top{color:inherit;font-size:13px;min-height:44px;display:inline-flex;align-items:center;text-decoration:none}
+.contact-destination:hover span,.back-top:hover{text-decoration:underline;text-underline-offset:5px}.contact-primary:hover{opacity:.75}
+#contact button:focus-visible{outline:2px solid currentColor;outline-offset:6px}
+@media(max-width:1100px){.contact-options{gap:20px}.contact-footer{gap:20px}.footer-name{font-size:12px}}
+@media(max-width:700px){#contact{padding-top:72px}.contact-footer{margin-top:80px}.contact-options{width:100%;order:3}}

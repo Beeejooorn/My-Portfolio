@@ -1,0 +1,94 @@
+@media (max-width: 900px) {
+  #top { min-height: 760px; height: 92svh; }
+  .hero-content { padding-top: max(190px, 24svh); }
+  #hero-title { font-size: min(13.4vw, 105px); line-height: 1.06; }
+  #about { min-height: auto; padding-block: 92px 100px; }
+  #about .about-grid { grid-template-columns: 1fr; gap: 42px; padding-top: 38px; }
+  #about .about-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  #about .about-main { padding-right: 0; }
+  #additional { min-height: auto; padding-inline: 32px; }
+  .contact-footer { margin-top: 80px; }
+}
+@media (max-width: 700px) {
+  .container { padding-inline: 24px; }
+  #top { min-height: 620px; height: 78svh; }
+  .hero-content { padding-top: max(180px, 22svh); }
+  .hero-intro { font-size: 12px; margin-bottom: 38px; }
+  #hero-title { font-size: min(12.9vw, 51px); line-height: 1.08; letter-spacing: -.035em; }
+  #hero-title span { white-space: nowrap; }
+  #additional { padding: 48px 24px 80px; }
+  #additional h2 { font-size: clamp(36px, 10vw, 48px); }
+  #additional .projects { margin-top: 36px; }
+  #additional .projects li { height: 144px; }
+  #additional .project { min-height: 144px; }
+  #additional .number { top: 28px; }
+  #additional .name { left: 32px; top: 20px; font-size: clamp(22px, 6vw, 29px); line-height: 1.15; max-width: calc(100% - 36px); white-space: normal; }
+  #additional .category { left: 32px; top: 72px; font-size: 14px; line-height: 1.3; }
+  #additional .action { left: 32px; top: 105px; min-height: 32px; font-size: 15px; }
+  #additional .all-projects { margin-top: 40px; }
+  #additional .all-projects a { font-size: 20px; }
+  #about { padding-block: 80px 84px; }
+  #about h2 { font-size: clamp(56px, 17vw, 76px); margin-bottom: 26px; }
+  #about .about-meta { gap: 16px; }
+  #about .about-meta p { font-size: 15px; overflow-wrap: anywhere; }
+  #about .about-main p { font-size: 18px; }
+  #about .about-cta { min-height: 44px; display: inline-flex; align-items: center; margin-top: 28px; }
+  #contact { padding-block: 76px 28px; }
+  #contact h2 { font-size: clamp(42px, 12vw, 56px); }
+  .contact-footer { gap: 12px; margin-top: 72px; }
+  .contact-footer .contact-options { margin-left: 0; order: 2; width: 100%; column-gap: 24px; row-gap: 4px; }
+  .contact-destination { min-height: 48px; }
+  .statement-main { overflow-wrap: break-word; }
+}
+@media (max-width: 410px) {
+  #additional .project[data-project="photo"] .category { top: 79px; }
+  #additional .project[data-project="photo"] .action { top: 111px; }
+}
+@media (max-width: 700px) {
+  #top { min-height: 500px; height: 62svh; }
+  #additional { padding-top: 28px; }
+  #additional .projects { margin-top: 30px; }
+  #additional .projects li { height: auto; min-height: 120px; }
+  #additional .project {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto auto;
+    align-content: center;
+    column-gap: 12px;
+    row-gap: 14px;
+    min-height: 120px;
+    padding: 22px 0;
+  }
+  #additional .number { display: none; }
+  #additional .name,
+  #additional .category,
+  #additional .action {
+    position: static;
+    max-width: 100%;
+    transform: none;
+  }
+  #additional .name { grid-column: 1 / -1; font-size: clamp(27px, 7.3vw, 34px); line-height: 1.1; letter-spacing: -.035em; font-weight: 500; }
+  #additional .category { grid-column: 1; grid-row: 2; align-self: center; font-size: 14px; line-height: 1.35; }
+  #additional .action { grid-column: 2; grid-row: 2; align-self: center; justify-self: end; min-height: 44px; display: inline-flex; align-items: center; white-space: nowrap; font-size: 14px; text-decoration: underline; }
+  #additional .project:active .name { opacity: .7; }
+  #contact h2 { font-size: clamp(30px, 9vw, 44px); white-space: nowrap; }
+  .contact-footer .contact-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 16px;
+    row-gap: 6px;
+    align-items: center;
+  }
+  .contact-footer .contact-destination { width: 100%; min-width: 0; }
+}
+@media (max-width: 360px) {
+  body:has(.grid) .info { gap: 8px; }
+  body:has(.grid) .info h2 { font-size: 23px; overflow-wrap: anywhere; }
+  body:has(.grid) .info span { font-size: 12px; }
+}
+@media (max-width: 360px) { body:has(.grid) .heading h1 { font-size: 64px; } }
+
+/* The shared footer provides the bottom inset on every page. */
+#contact:has(.site-footer),
+.page:has(> .site-footer),
+main:has(> .site-footer) { padding-bottom: 0; }
