@@ -92,3 +92,11 @@
 #contact:has(.site-footer),
 .page:has(> .site-footer),
 main:has(> .site-footer) { padding-bottom: 0; }
+
+/* Give the closing contact message room before the footer divider. */
+#contact .site-footer,
+.closing + .site-footer { margin-top: 64px; }
+@media (max-width: 700px) {
+  #contact .site-footer,
+  .closing + .site-footer { margin-top: 40px; }
+}
