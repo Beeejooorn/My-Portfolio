@@ -1,3 +1,6 @@
+#additional .phone-thumb,
+#additional .phone-action { display: none; }
+
 @media (max-width: 900px) {
   #top { min-height: 760px; height: 92svh; }
   .hero-content { padding-top: max(190px, 24svh); }
@@ -51,15 +54,16 @@
   #additional .projects li { height: auto; min-height: 120px; }
   #additional .project {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    grid-template-rows: auto auto;
+    grid-template-columns: minmax(0, 1fr) 92px;
+    grid-template-rows: repeat(3, auto);
     align-content: center;
-    column-gap: 12px;
-    row-gap: 14px;
+    column-gap: 16px;
+    row-gap: 0;
     min-height: 120px;
-    padding: 22px 0;
+    padding: 18px 0;
   }
   #additional .number { display: none; }
+  #additional .project .paper { box-shadow: none; }
   #additional .name,
   #additional .category,
   #additional .action {
@@ -67,9 +71,12 @@
     max-width: 100%;
     transform: none;
   }
-  #additional .name { grid-column: 1 / -1; font-size: clamp(27px, 7.3vw, 34px); line-height: 1.1; letter-spacing: -.035em; font-weight: 500; }
-  #additional .category { grid-column: 1; grid-row: 2; align-self: center; font-size: 14px; line-height: 1.35; }
-  #additional .action { grid-column: 2; grid-row: 2; align-self: center; justify-self: end; min-height: 44px; display: inline-flex; align-items: center; white-space: nowrap; font-size: 14px; text-decoration: underline; }
+  #additional .name { grid-column: 1; grid-row: 1; font-size: 25px; line-height: 1.1; letter-spacing: -.035em; font-weight: 500; }
+  #additional .category { grid-column: 1; grid-row: 2; margin-top: 5px; font-size: 13px; line-height: 1.3; }
+  #additional .action { grid-column: 1; grid-row: 3; min-height: 0; margin-top: 8px; font-size: 13px; line-height: 1.3; text-decoration: underline; text-underline-offset: 3px; }
+  #additional .wide-action { display: none; }
+  #additional .phone-action { display: inline; }
+  #additional .phone-thumb { display: block; grid-column: 2; grid-row: 1 / 4; align-self: center; object-fit: cover; object-position: center top; }
   #additional .project:active .name { opacity: .7; }
   #contact h2 { font-size: clamp(30px, 9vw, 44px); white-space: nowrap; }
   .contact-footer .contact-options {
